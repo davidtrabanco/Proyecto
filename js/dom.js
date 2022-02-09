@@ -227,8 +227,10 @@ export const updateProductsCartDom=()=>{
     }
 
     //Actualizo el numero de productos que contiene el cart en el DOM:
-    $('.countItemsCart')[0].textContent=window.cart.length
-
+    if(window.cart!=null){
+        $('.countItemsCart')[0].textContent=window.cart.length
+    }
+    
     //Actualizo los Listener de los botones para borrar producto del cart
     updateCartButtons() // <- this module
 
