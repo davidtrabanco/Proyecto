@@ -1,7 +1,7 @@
 //MODULES IMPORTED----------------------------------------------------------------------------------------------------------------------------
 import {CustomProduct, addComponents, selectComponent, products, addNewProduct, unselectComponent, unselectAllComponents, components} from "./product.js";
 import {saveToLocalStorage, addNewElement, getElementDom, getAllElementsDom} from "./globalfunctions.js"
-import {cart, addToCart, removeFromCart, loadCartFromLocalStorage} from './cart.js';
+import {addToCart, removeFromCart, loadCartFromLocalStorage} from './cart.js';
 
 
 
@@ -184,8 +184,8 @@ export const addProductToCartDom=(order,cartTotalAmount)=>{
     elementTdTitle.textContent= order.name; //Titulo del producto
     elementTdDescription.textContent=order.description; //Descripcion del producto
     elementTdDescription.className='descripcion'
-    elementTdQty.textContent=order.quantity; //cantidad
-    elementTdPrice.textContent=`${order.subTotalAmount}`; // SubTotal
+    elementTdQty.textContent=`x${order.quantity}`; //cantidad
+    elementTdPrice.textContent=`$${order.subTotalAmount}`; // SubTotal
     elementTdPrice.className='productAmountCart';
     elementAdelete.textContent='X'
     elementAdelete.className='borrar-item-cart'
@@ -231,7 +231,7 @@ export const updateProductsCartDom=()=>{
     updateCartButtons() // <- this module
 
     //Gardo el cart en el LocalStorage
-    saveToLocalStorage('CART', cart); // <- globalfunctions.js
+    saveToLocalStorage('CART', window.cart); // <- globalfunctions.js
 
 }
 

@@ -6,7 +6,9 @@ import {addProductToCartDom, updateProductsCartDom} from "./dom.js";
 // CART - FUNCTIONS & VAR  ↓↓↓↓↓
 //=========================================================================================================
 
-export let cart=[]; //Arrary con los productos seleccionados por el cliente
+
+
+
 
 //Función para agregar productos al cart:
 export const addToCart=(Product, qty,option)=>{
@@ -24,7 +26,9 @@ export const addToCart=(Product, qty,option)=>{
     const obTemp={quantity: qty, option: option,subTotalAmount: subTotalAmount}; 
 
     //Agrego a CART la combinación del objeto Item + Producto + objeto temporal
-    cart.push({...obCartId, ...Product, ...obTemp});
+    if(window.cart!=null){
+        window.cart.push({...obCartId, ...Product, ...obTemp});
+    }
 
     //Agrego el producto al carrito del DOM
     updateProductsCartDom(); // <- dom.js
@@ -33,7 +37,7 @@ export const addToCart=(Product, qty,option)=>{
 //Función para eliminar un producto del cart:
 export const removeFromCart=(cartIdReceived)=>{
     //Filtro el producto a eliminar:
-    cart=cart.filter(item => item.cartId != cartIdReceived)
+    window.cart=window.cart.filter(item => item.cartId != cartIdReceived)
     //Actualizo el carrito en el DOM:
     updateProductsCartDom(); // <- dom.js
 }
@@ -41,9 +45,9 @@ export const removeFromCart=(cartIdReceived)=>{
 //Función para obtener el Cart pendiente desde el LocalStorage:
 export const loadCartFromLocalStorage=()=>{
     //guardo en el array Cart los datos:
-    cart = getFromLocalStorage('CART'); // <- globalfunctions.js
+    window.cart = getFromLocalStorage('CART'); // <- globalfunctions.js
     //Actualizo el carrito en el DOM:
-    if(cart!=null){
+    if(window.cart!=null){
         updateProductsCartDom(); // <- dom.js
     }
 }

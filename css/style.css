@@ -198,12 +198,13 @@ body .menu-carrito{
 .barra .armar-pizza:hover{
     font-size: x-large;
     animation-iteration-count: initial;
+    text-shadow: 1px 1px 25px rgb(255, 255, 255);
 }
 
 @keyframes zoom-text {
     0% {font-size: larger;;}
     50% {font-size: x-large;}
-    100% {font-size: larger;;}
+    100% {font-size: larger;}
   }
 
 
@@ -214,7 +215,7 @@ body .checkout-modal{
     display: flex;
     justify-content: center;
     align-items: center;
-    background-color: rgba(0, 0, 0, 0.6);
+    background-color: rgba(66, 40, 1, 0.651);
 }
 
 .checkout-modal{
@@ -262,9 +263,10 @@ body .checkout-modal{
 .contenedor-checkout-modal-sub .checkout-title-div{
     text-align: center;
     font-weight: bold;
+    color: white;
     
     background-color: #ffae00;
-    opacity: 0.5;
+    opacity: 0.55;
     margin-bottom: 5px;
 }
 

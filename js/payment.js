@@ -1,4 +1,4 @@
-import {cart} from "./cart.js";
+
 
 //=========================================================================================================
 // PAYMENT CLASS ↓↓↓↓↓
@@ -29,8 +29,8 @@ export default class Payment{
 
         //1ro Calculo el importe total de los productos
         this.productsTotalAmount=0;
-        if(cart!=null){
-            for (const iterator of cart) {//recorro el array CART
+        if(window.cart!=null){1
+            for (const iterator of window.cart) {//recorro el array CART
                 this.productsTotalAmount +=parseFloat(iterator.subTotalAmount);//sumo el subtotal de cada item
             }
         }
@@ -83,8 +83,8 @@ export default class Payment{
         this.cashPayment.exchange = this.cashPayment.cash - this.totalAmount;
     }
 
-    //Método para setear el importe de pago en efectivo:
-    set setCashPayment(value){this.cashPayment.cash=value};
+    /* //Método para setear el importe de pago en efectivo:
+    set setCashPayment(value){this.cashPayment.cash=value}; */
 
     //Método para caluclar el costo de servicio de MP:
     calculateMpServiceCost=(days)=> {

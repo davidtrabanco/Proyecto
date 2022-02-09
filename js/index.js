@@ -3,7 +3,7 @@ import Order from './order.js';
 import Vendor from "./vendor.js";
 import {CustomProduct, addComponents, selectComponent, products, addNewProduct, unselectComponent, components} from "./product.js";
 import {addAllComponentsToDom, addAllProductsToDom, initComponentsDom, addItemCheckoutAmount} from "./dom.js"
-import {cart, addToCart, loadCartFromLocalStorage} from './cart.js';
+import {addToCart, loadCartFromLocalStorage} from './cart.js';
 import {getElementDom, getAllElementsDom} from "./globalfunctions.js"
 import {animationToCartDom} from "./animations.js";
 
@@ -14,6 +14,11 @@ import {animationToCartDom} from "./animations.js";
 const vendor = new Vendor();
 const order = new Order();//Creo una order para trabajar:
 const customProduct = new CustomProduct("Pizza Personalizada",""); //Creo un customProduct para trabajar en caso de haber productos personalizados:
+
+
+window.cart=[];//Arrary con los productos seleccionados por el cliente
+
+
 
 //Agrego Productos armados TEMPORAL:
 addNewProduct("Muzzarella","Salsa, muzzarella, aceitunas, orégano", 390,"img/pizza-margherita.jpg"); // <- product.js
@@ -44,7 +49,6 @@ order.customer.loadCustomerInfoLs(); //<- customer.js
 //Cargo el carrito si existe en el Local Storage:
 loadCartFromLocalStorage(); // <- cart.js
 
-
 //=========================================================================================================
 // DOM LOAD ↓↓↓↓↓
 //=========================================================================================================
@@ -53,6 +57,7 @@ addAllProductsToDom(); // <- dom.js
 
 //Cargo todos los componentes al DOM
 addAllComponentsToDom(); // <- dom.js
+
 
 
 //=========================================================================================================
@@ -177,21 +182,22 @@ $('#checkout-shipping-notes').change((e)=>{
 
 //PAYMENT INFO
 //Si cambian los checkbox del pago:
-$('#checkout-payment-div :input').change((e)=>{
+$('#checkout-payment-div :input[type=radio]').change((e)=>{
     if(e.target.dataset.paytype=='cash'){ //si abono en efectivo
         
         order.payment.type='cash' //Indico que abonará en efectivo
         updateCheckoutAmount();//Actualizo los importes a abonar, en variables y en DOM
     
     }else{ //sino, abono con Mercado Pago
-
         order.payment.type='OnLine'//Indico que abonará con MP
         updateCheckoutAmount();//Actualizo los importes a abonar, en variables y en DOM
     }
-    //Cuando ingresan el importe de pago lo actualizo
-    if (e.target.name=='amount-cash') {
-        order.payment.cashPayment.cash= e.target.value; //Guardo en la var el importe con el que abona el cliente
-    }
+})
+//Cuando ingresan el importe de pago lo actualizo
+$('#checkout-cashamount-text').change((e)=>{
+    order.payment.cashPayment.cash= e.target.value; //Guardo en la var el importe con el que abona el cliente
+    $('#cashpay-req-radio').trigger('click');//Pago electronico
+    $('#cashpay-req-radio').trigger('change');//Pago electronico
 })
 
 
@@ -231,11 +237,13 @@ export const updateCheckoutAmount=()=>{
     }
 }
 
+
 //Cargo valores por defecto:
 order.payment.setDiscount("%",10); //Descuento 10%
 $('#shipping-req-radio').trigger('click'); //Envío requerido
+$('#shipping-req-radio').trigger('change'); //Envío requerido
 $('#onlinepay-shipping-radio').trigger('click');//Pago electronico
-
+$('#onlinepay-shipping-radio').trigger('change');//Pago electronico
 //--------------------------------------------------------------------------------------------------------
 
 

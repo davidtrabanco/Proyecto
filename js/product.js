@@ -1,5 +1,5 @@
 import {checkMandatoryComponents, updateTotalComponentsSelectedDom, initComponentsDom} from "./dom.js"
-import {cart, addToCart, loadCartFromLocalStorage} from './cart.js';
+import {addToCart, loadCartFromLocalStorage} from './cart.js';
 
 
 //=========================================================================================================
