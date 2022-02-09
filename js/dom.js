@@ -219,13 +219,13 @@ export const updateProductsCartDom=()=>{
     getElementDom('#cartTable').innerHTML=''; //Elimino todos los productos del cart
     getElementDom('#totalAmountCart').textContent='0'; //Pongo en 0 el importe total
 
-    for (const item of cart) {//Recorro todos los items del cart
+    for (const item of window.cart) {//Recorro todos los items del cart
         cartTotalAmount+=item.subTotalAmount; //Calculo el importe total
         addProductToCartDom(item,cartTotalAmount); //Cargo el elemento al DOM
     }
 
     //Actualizo el numero de productos que contiene el cart en el DOM:
-    $('.countItemsCart')[0].textContent=cart.length
+    $('.countItemsCart')[0].textContent=window.cart.length
 
     //Actualizo los Listener de los botones para borrar producto del cart
     updateCartButtons() // <- this module
