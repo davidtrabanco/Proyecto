@@ -219,9 +219,11 @@ export const updateProductsCartDom=()=>{
     getElementDom('#cartTable').innerHTML=''; //Elimino todos los productos del cart
     getElementDom('#totalAmountCart').textContent='0'; //Pongo en 0 el importe total
 
-    for (const item of window.cart) {//Recorro todos los items del cart
-        cartTotalAmount+=item.subTotalAmount; //Calculo el importe total
-        addProductToCartDom(item,cartTotalAmount); //Cargo el elemento al DOM
+    if(window.cart!=null){
+        for (const item of window.cart) {//Recorro todos los items del cart
+            cartTotalAmount+=item.subTotalAmount; //Calculo el importe total
+            addProductToCartDom(item,cartTotalAmount); //Cargo el elemento al DOM
+        }
     }
 
     //Actualizo el numero de productos que contiene el cart en el DOM:
