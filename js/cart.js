@@ -27,6 +27,7 @@ export const addToCart=(Product, qty,option)=>{
 
     //Agrego a CART la combinación del objeto Item + Producto + objeto temporal
     if(window.cart!=null){
+        alert('agregado')
         window.cart.push({...obCartId, ...Product, ...obTemp});
     }
 
