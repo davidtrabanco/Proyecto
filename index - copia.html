@@ -1,0 +1,336 @@
+<!DOCTYPE html>
+<html lang="es">
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <link rel="stylesheet" href="css/normalize.css">
+    <link rel="stylesheet" href="css/skeleton.css">
+    <link rel="stylesheet" href="css/style.css">
+    <title>Qué Pizza!</title>
+</head>
+<body>
+    <script type="module" src="js/order.js"></script>
+    <script type="module" src="js/vendor.js"></script>
+    <script type="module" src="js/shipping.js"></script>
+    <script type="module" src="js/payment.js"></script>
+    <script type="module" src="js/customer.js"></script>
+    
+    <script type="module" src="js/product.js"></script>
+    <script type="module" src="js/index.js"></script>
+    
+
+    <header class="header">
+        <div class="container">
+            <div class="row">
+                <div class="four columns">
+                    <h1><img src="img/logo.png" alt="">Qué Pizza!</h1>
+                </div>
+                <div class="two columns u-pull-right">
+                    <ul>
+                        <li class="menu-carrito">
+                            <img src="img/cart.png" alt="">
+                            <div id="carrito">
+                                <p class="carrito-vacio">Comanda</p>
+                                <table class="u-full-width">
+                                    <thead>
+                                        <tr>
+                                            <th>Imagen</th>
+                                            <th>Carta</th>
+                                            <th>Precios</th>
+                                        </tr>
+                                    </thead>
+                                    <tbody>
+                                        <tr>
+                                            <td>
+                                                <img src="img/pizza-cuatroquesos.jpg" width="100" alt="">
+                                            </td>
+                                            <td>Pizza con palmitos</td>
+                                            <td>$15</td>
+                                            <td><a href="#" class="borrar-item">X</a></td>
+                                        </tr>
+                                    </tbody>
+                                    <tbody>
+                                        <tr>
+                                            <td>
+                                                <img src="img/pizza-cuatroquesos.jpg" width="100" alt="">
+                                            </td>
+                                            <td>Pizza con rucula</td>
+                                            <td>$25</td>
+                                            <td><a href="#" class="borrar-item">X</a></td>
+                                        </tr>
+                                    </tbody>
+                                </table>
+                                <a href="#" class="u-full-width confirmar-pedido button">Confirmar Pedido</a>
+                                <a href="#" class="u-full-width borrar-pedido button">Borrar pedido</a>
+                            </div>
+                        </li>
+                    </ul>
+                </div>
+            </div>
+        </div>
+        
+    </header>
+
+    <div class="hero">
+        <div class="container">
+            <div class="row">
+                <div class="six colmuns">
+                    <div class="contenido-hero">
+                        <h2>Armá tu pizza</h2>
+                        <p>Todas las pizzas en oferta!</p>
+                        <form>
+                            <input class="u-full-width" type="text" placeholder="Elige tu sabor" id="buscador">
+                            <input type="submit" class="submit-buscador">
+                        </form>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </div>
+
+    <div class="barra">
+        <div class="container">
+            <div class="row">
+                <div class="four columns icono icono1">
+                    <p>Seleccioná el tamaño</p>
+                </div>
+                <div class="four columns icono icono2">
+                    <p>Elegí los ingredientes</p>
+                </div>
+                <div class="four columns icono icono3">
+                    <p>Suma una bebida</p>
+                </div>
+            </div>
+        </div>
+    </div>
+
+    <div class="lista-productos" class="container">
+        <h1 class="encabezado">Sabores</h1>
+
+        <div class="row">
+            <div class="four columns">
+                <div class="producto">
+                    <img src="img/pizza-margherita.jpg" class="imagen-platillo u-full-width" alt="">
+                    <div class="info-producto">
+                        <img src="img/estrellas.png" alt="" class="estellas-valoracion">
+                        <h4>Pizza Simple</h4> 
+                        
+                        <p>Masa Salsa y Queso</p>
+                        
+                        <p class="precio">$390<span class="u-pull-right">$350</span> </p>
+                        <a href="#" class="u-full-width button button-primary input agregar-carrito" data-id="1">Quiero una!</a>
+                    </div>
+                </div>
+            </div>
+
+            <div class="four columns">
+                <div class="producto">
+                    <img src="img/pizza-margherita.jpg" class="imagen-platillo u-full-width" alt="">
+                    <div class="info-producto">
+                        <h4>Pizza Simple</h4>
+                        <p>Masa Salsa y Queso</p>
+                        <img src="img/estrellas.png" alt="">
+                        <p class="precio">$390<span class="u-pull-right">$350</span> </p>
+                        <a href="#" class="u-full-width button button-primary input agregar-carrito" data-id="1">Quiero una!</a>
+                    </div>
+                </div>
+            </div>
+            
+            <div class="four columns">
+                <div class="producto">
+                    <img src="img/pizza-margherita.jpg" class="imagen-platillo u-full-width" alt="">
+                    <div class="info-producto">
+                        <h4>Pizza Simple</h4>
+                        <p>Masa Salsa y Queso</p>
+                        <img src="img/estrellas.png" alt="">
+                        <p class="precio">$390<span class="u-pull-right">$350</span> </p>
+                        <a href="#" class="u-full-width button button-primary input agregar-carrito" data-id="1">Quiero una!</a>
+                    </div>
+                </div>
+            </div>
+
+            <div class="row">
+                <div class="four columns">
+                    <div class="producto">
+                        <img src="img/pizza-margherita.jpg" class="imagen-platillo u-full-width" alt="">
+                        <div class="info-producto">
+                            <h4>Pizza Simple</h4>
+                            <p>Masa Salsa y Queso</p>
+                            <img src="img/estrellas.png" alt="">
+                            <p class="precio">$390<span class="u-pull-right">$350</span> </p>
+                            <a href="#" class="u-full-width button button-primary input agregar-carrito" data-id="1">Quiero una!</a>
+                        </div>
+                    </div>
+                </div>
+                <div class="four columns">
+                    <div class="producto">
+                        <img src="img/pizza-margherita.jpg" class="imagen-platillo u-full-width" alt="">
+                        <div class="info-producto">
+                            <h4>Pizza Simple</h4>
+                            <p>Masa Salsa y Queso</p>
+                            <img src="img/estrellas.png" alt="">
+                            <p class="precio">$390<span class="u-pull-right">$350</span> </p>
+                            <a href="#" class="u-full-width button button-primary input agregar-carrito" data-id="1">Quiero una!</a>
+                        </div>
+                    </div>
+                </div>
+                <div class="four columns">
+                    <div class="producto">
+                        <img src="img/pizza-margherita.jpg" class="imagen-platillo u-full-width" alt="">
+                        <div class="info-producto">
+                            <h4>Pizza Simple</h4>
+                            <p>Masa Salsa y Queso</p>
+                            <img src="img/estrellas.png" alt="">
+                            <p class="precio">$390<span class="u-pull-right">$350</span> </p>
+                            <a href="#" class="u-full-width button button-primary input agregar-carrito" data-id="1">Quiero una!</a>
+                        </div>
+                    </div>
+                </div>
+            </div>
+
+            <div class="row">
+                <div class="four columns">
+                    <div class="producto">
+                        <img src="img/pizza-margherita.jpg" class="imagen-platillo u-full-width" alt="">
+                        <div class="info-producto">
+                            <h4>Pizza Simple</h4>
+                            <p>Masa Salsa y Queso</p>
+                            <img src="img/estrellas.png" alt="">
+                            <p class="precio">$390<span class="u-pull-right">$350</span> </p>
+                            <a href="#" class="u-full-width button button-primary input agregar-carrito" data-id="1">Quiero una!</a>
+                        </div>
+                    </div>
+                </div>
+                <div class="four columns">
+                    <div class="producto">
+                        <img src="img/pizza-margherita.jpg" class="imagen-platillo u-full-width" alt="">
+                        <div class="info-producto">
+                            <h4>Pizza Simple</h4>
+                            <p>Masa Salsa y Queso</p>
+                            <img src="img/estrellas.png" alt="">
+                            <p class="precio">$390<span class="u-pull-right">$350</span> </p>
+                            <a href="#" class="u-full-width button button-primary input agregar-carrito" data-id="1">Quiero una!</a>
+                        </div>
+                    </div>
+                </div>
+                <div class="four columns">
+                    <div class="producto">
+                        <img src="img/pizza-margherita.jpg" class="imagen-platillo u-full-width" alt="">
+                        <div class="info-producto">
+                            <h4>Pizza Simple</h4>
+                            <p>Masa Salsa y Queso</p>
+                            <img src="img/estrellas.png" alt="">
+                            <p class="precio">$390<span class="u-pull-right">$350</span> </p>
+                            <a href="#" class="u-full-width button button-primary input agregar-carrito" data-id="1">Quiero una!</a>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </div>
+
+    <!-- MENU PIZZA PERSONALIZADA: -->
+    <div class="container">
+        <div class="ten columns lista-ingredientes">
+            
+            <div class="row">
+                
+                <div class="ingredientes u-full-width">
+                    
+                    <p class="titulo">ingredientes</p>
+                    
+                    <table class="u-full-width">
+                        <!-- <thead>
+                            <tr>
+                                <th></th>
+                                <th>Ingrediente</th>
+                                <th>Precio</th>
+                            </tr>
+                        </thead> -->
+                        <tbody id="componentsTable">
+                            <tr>
+                                <td>
+                                    <img src="img/icono-ingredientes.png" width="100" alt="">
+                                </td>
+                                <td>Cebolla Caramelizada</td>
+                                <td>$50</td>
+                                <td><input type="checkbox" name="" id=""> agregarle</td>
+                            </tr>
+                        
+                            <tr>
+                                <td>
+                                    <img src="img/pizza-cuatroquesos.jpg" width="100" alt="">
+                                </td>
+                                <td>Pimientos Asados</td>
+                                <td>$65</td>
+                                <td><input type="checkbox" name="" id=""> agregarle</td>
+                            </tr>
+                            
+                            <tr>
+                                <td>
+                                    <img src="img/pizza-cuatroquesos.jpg" width="100" alt="">
+                                </td>
+                                <td>Jamón Crudo</td>
+                                <td>$95</td>
+                                <td><input type="checkbox" name="" id=""> agregarle</td>
+                            </tr>
+                            <tr>
+                                <td>
+                                    <img src="img/pizza-cuatroquesos.jpg" width="100" alt="">
+                                </td>
+                                <td>Tomate en rodajas</td>
+                                <td>$45</td>
+                                <td><input type="checkbox" name="" id=""> agregarle</td>
+                            </tr>
+                            <tr>
+                                
+                                <td>
+                                    <img src="img/pizza-cuatroquesos.jpg" width="100" alt="">
+                                </td>
+                                <td>Rúcula</td>
+                                <td>$55</td>
+                                <td><input type="checkbox" name="" id="">agregarle</td>
+                                
+                            </tr>
+                        </tbody>
+                    </table>
+                    
+                    <a href="#" class="button u-full-width confirmar-ingredientes">Armar Pizza</a>
+                    <a href="#" class="button u-full-width borrar-seleccion">Borrar selección</a>
+                </div>
+            </div>
+        </div>
+    </div>
+
+
+    <footer class="footer">
+        <div class="container">
+            <div class="row">
+                <div class="four columns">
+                    <nav class="menu">
+                        <a href="#" class="enlace">Carta</a>
+                        <a href="#" class="enlace">Pizzas</a>
+                        <a href="#" class="enlace">Promociones</a>
+                        <a href="#" class="enlace">Precios</a>
+                    </nav>
+                </div>
+                <div class="four columns">
+                    <nav class="menu">
+                        <a href="#" class="enlace">Donde estamos?</a>
+                        <a href="#" class="enlace">Telefono</a>
+                        <a href="#" class="enlace">Redes Sociales</a>
+
+                    </nav>
+
+                </div>
+
+            </div>
+
+        </div>
+
+    </footer>
+
+    
+</body>
+</html>

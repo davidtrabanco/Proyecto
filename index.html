@@ -1,0 +1,302 @@
+<!DOCTYPE html>
+<html lang="es">
+
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <link rel="stylesheet" href="css/normalize.css">
+    <link rel="stylesheet" href="css/skeleton.css">
+    <link rel="stylesheet" href="css/style.css">
+
+    <link
+    rel="stylesheet"
+    href="https://cdnjs.cloudflare.com/ajax/libs/animate.css/4.1.1/animate.min.css"/>
+
+
+    <title>Qué Pizza!</title>
+       <script src="https://code.jquery.com/jquery-3.6.0.min.js" integrity="sha256-/xUj+3OJU5yExlq6GSYGSHk7tPXikynS7ogEvDej/m4=" crossorigin="anonymous"></script>
+</head>
+
+<body>
+    
+    <header class="header">
+        <div class="container">
+            <div class="row">
+                
+                <div class="one columns u-pull-right header-cart-div">
+                    <ul>
+                        <li class="menu-carrito">
+                            <div class="u-pull-right header-cartimg-div">
+                                <img src="img/cart.png" alt="">
+                                <span class="countItemsCart" id="123" >3</span>
+                            </div>  
+                            
+                            <div id="carrito" style="display: none">
+                                <p class="carrito-vacio">Comanda</p>
+                                <table class="u-full-width" id="cartTable">
+                                    <thead>
+                                        <tr>
+                                            <th>Pizza</th>
+                                            <th></th>
+                                            <th>Cant</th>
+                                            <th>Precio</th>
+                                        </tr>
+                                    </thead>
+                                    <!-- <tbody>
+                                        <tr>
+                                            <td>  Pizza con palmitos</td>
+                                            <td>Salsa, muzzarella, aceitunas, orégano</td>
+                                            <td>3</td>
+                                            <td>$15</td>
+                                            <td><a href="#" class="borrar-item">X</a></td>
+                                        </tr>
+                                    </tbody> -->
+
+                                    
+                                    
+                                </table>
+
+
+                                <p class="totalCartLabel">Total  &nbsp;$<span id="totalAmountCart">0</span></p>
+                                
+                                <a href="#" id='confimCart' class="u-full-width confirmar-pedido button">Confirmar Pedido</a>
+                                <a href="#" class="u-full-width borrar-pedido button">Borrar pedido</a>
+                            </div>
+                        </li>
+                    </ul>
+                </div>
+            </div>
+        </div>
+        
+    </header>
+
+    <div class="hero">
+        <div class="container">
+            <div class="row">
+                <div class="six colmuns">
+                    <div class="contenido-hero">
+                        
+                            <img src="img/logo-pizza.png" alt="">
+                        
+                        <!-- <h2>Armá tu pizza</h2>
+                        <p>Todas las pizzas en oferta!</p>
+                        <form>
+                            <input class="u-full-width" type="text" placeholder="Elige tu sabor" id="buscador">
+                            <input type="submit" class="submit-buscador">
+                        </form> -->
+                    </div>
+                </div>
+            </div>
+        </div>
+    </div>
+
+    <div class="barra">
+        <div class="container">
+            <div class="row">
+                <a class="u-full-width button input armar-pizza">Pizza Personalizada</a>
+            </div>
+        </div>
+    </div>
+
+    <!-- CHECKOUT MODAL -->
+    <div class="checkout-modal" style="display: none;">
+        <div class="contenedor-checkout-modal">
+            <div class="row contenedor-checkout-modal-sub">
+                    <div class="u-full-width checkout-title">
+                        <h7>Checkout</h7>
+
+                    </div>
+                
+                    <!-- DATOS DEL CLIENTE -->
+                    
+                    <form class="customer-data-checkout" autocomplete="on">
+                        <div class="checkout-title-div">Tus Datos</div>
+                        <div id="checkout-customerinfo-div" class="row">
+                            <div >
+                                <label for="checkout-customer-name">Nombre</label>
+                                <input class="u-full-width" type="text" placeholder="Nombre" id="checkout-customer-name" name="name" autocomplete="name">
+                            </div>
+                            <div >
+                                <label for="checkout-customer-tel">Teléfono Movil</label>
+                                <input class="u-full-width" type="tel" placeholder="(0___) 15________" id="checkout-customer-tel" autocomplete="tel">
+                            </div>
+                            <div>
+                                <label for="checkout-customer-address">Dirección de envío</label>
+                                <input class="u-full-width" type="text" placeholder="" id="checkout-customer-address" name="address" autocomplete="address">
+                            </div>
+                            <div >
+                                <label for="checkout-customer-email">e-mail</label>
+                                <input class="u-full-width" type="email" placeholder="test@mailbox.com" id="checkout-customer-email" name="email" autocomplete="email">
+                            </div>
+                        </div>
+                        <!-- <label for="checkout-customer-notes">Notas</label>
+                        <textarea class="u-full-width" placeholder="Notas" id="checkout-customer-notes"></textarea> -->
+                       
+
+                      <!-- DATOS DE ENVIO -->
+                        <div class="checkout-title-div">Envío</div>
+                        <div id="checkout-shippinginfo-div" class="row">
+                            <!-- <div >
+                                <iframe src="https://www.google.com/maps/embed?pb=!1m18!1m12!1m3!1d850.9116324304784!2d-64.21315022288287!3d-31.45139664240658!2m3!1f0!2f0!3f0!3m2!1i1024!2i768!4f13.1!3m3!1m2!1s0x9432a24f4b6ed27b%3A0x41b7ac5d2802be46!2sQue%20Pizza!5e0!3m2!1ses-419!2sar!4v1643428088785!5m2!1ses-419!2sar" width="380" height="300" style="border:0;" allowfullscreen="" loading="lazy"></iframe>
+                            </div> -->
+                            
+                            <table class="u-full-width checkout-shipping-table">
+                                <tbody>
+                                
+                                    <tr>
+                                        <td><input class="radio-shipping" type="radio" name="shipping-radio-checkout" data-shipping='true' id="shipping-req-radio"></td>
+                                        <td><label id="checkout-ship-req-label" for="shipping-req-radio">Envío a domicilio</label></td>
+                                    </tr>
+                                    <tr>
+                                        <td><input class="radio-shipping" type="radio" name="shipping-radio-checkout" data-shipping='false' id="no-shipping-radio"></td>
+                                        <td><label for="no-shipping-radio">Retiro personalmente</label></td>
+                                    </tr>
+                                </tbody>
+                            </table>
+                        </div>
+                        <label for="checkout-shipping-notes">Notas (opcional)</label>
+                        <textarea class="u-full-width" id="checkout-shipping-notes"></textarea>
+                        
+                   
+                      <!-- DATOS DE pago -->
+                      <div class="checkout-title-div">Pago</div>
+                        <div class="row checkout-payment-div" id="checkout-payment-div">
+                            <div class="u-full-width payment-type-div">
+                                <input type="radio" name="payment-radio-checkout" data-paytype="cash" id="cashpay-req-radio">
+                                <label for="cashpay-req-radio">Efectivo</label>
+                            </div>
+                    
+                            <div class="u-full-width payment-type-div"> 
+                                <input type="text" name="amount-cash" id="checkout-cashamount-text" placeholder="Abono con ...">   
+                            </div>
+                            <div class="u-full-width line-div"></div>
+                            <div class="u-full-width payment-type-div">
+                        
+                                <input type="radio" name="payment-radio-checkout" data-paytype="online" id="onlinepay-shipping-radio">
+                                <label for="onlinepay-shipping-radio">Mercado Pago</label>
+                            </div>
+                        </div>
+
+                        <div class="checkout-title-div">Detalle de tu pago</div>
+                        <table class="u-full-width">
+                            <tbody id="checkout-table-amount">
+                                
+                            </tbody>
+                        </table>
+                        
+                        <input id="checkout-cancel-button" class="u-full-width button" type="button" value="Cancelar">
+                        
+                    </form>
+                <div class="checkout-finalamount-div">Total $ <span id="checkout-amount-label">999</span></div>    
+                <input id="checkout-confirm-button" class="u-full-width button-primary checkout-confirm-button" type="button" value="Confirmar Pedido">
+            </div>
+        </div>
+
+    </div>
+
+    
+
+    <!-- MENU PIZZA PERSONALIZADA: -->
+    <div class="ingredientes-modal" style="display: none;">
+        <div class="ten columns lista-ingredientes">
+            
+            <div class="row">
+                
+                <div class="ingredientes u-full-width">
+                    
+                    <!-- <p class="titulo">ingredientes</p> -->
+                    
+                    <table class="u-full-width components-table">
+                        <thead>
+                            <tr>
+                                <th></th>
+                                <th>Ingrediente</th>
+                                <th>Precio</th>
+                                <th>Agregarle</th>
+                            </tr>
+                        </thead>
+                        
+                            <tbody id="componentsTable">
+                            <!-- AQUI VAN LOS INGREDIENTES -->
+                            </tbody>
+                     
+                        <tbody class="bottomComponentsTable">
+                            <tr class="trTotal">
+                                <td></td>
+                                <td>TOTAL</td>
+                                <td >$<span id="subTotalComponentsSelected">0</span></td>
+                                <td></td>
+                            </tr>
+                        </tbody>
+
+                        
+
+                    </table>
+
+                    <textarea placeholder="Notas para el chef" class="u-full-width" name="" id="customProductNotes" cols="30" rows="10"></textarea>
+                    <a href="#" id="confirmCustomProduct" class="button button-primary u-full-width confirmar-ingredientes">Armar Pizza</a>
+                    <a href="#" class="button u-full-width borrar-seleccion">Cancelar</a>
+                </div>
+            </div>
+        </div>
+    </div>
+
+
+    <div id="prodcutsList" class="lista-productos" class="container">
+        <h1 class="encabezado">Variedades</h1>
+
+
+           
+
+        
+        
+    </div>
+
+    
+
+
+    <footer class="footer">
+        <div class="container">
+            <div class="row">
+                <div class="four columns">
+                    <nav class="menu">
+                        <a href="#" class="enlace">Carta</a>
+                        <a href="#" class="enlace">Pizzas</a>
+                        <a href="#" class="enlace">Promociones</a>
+                        <a href="#" class="enlace">Precios</a>
+                    </nav>
+                </div>
+                <div class="four columns">
+                    <nav class="menu">
+                        <a href="#" class="enlace">Donde estamos?</a>
+                        <a href="#" class="enlace">Telefono</a>
+                        <a href="#" class="enlace">Redes Sociales</a>
+
+                    </nav>
+
+                </div>
+
+            </div>
+
+        </div>
+
+    </footer>
+
+    
+    <script type="module" src="js/order.js"></script>
+    <script type="module" src="js/index.js"></script>
+    
+    <script type="module" src="js/vendor.js"></script>
+    <script type="module" src="js/shipping.js"></script>
+    <script type="module" src="js/payment.js"></script>
+    <script type="module" src="js/customer.js"></script>
+    <script type="module" src="js/product.js"></script>
+    
+    <script type="module" src="js/dom.js"></script>
+    <script type="module" src="js/cart.js"></script>
+    <script type="module" src="js/globalfunctions.js"></script>
+    
+    
+</body>
+</html>

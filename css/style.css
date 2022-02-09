@@ -1,0 +1,496 @@
+body{
+    background-color: #000000;
+    padding-right: 0;
+
+    background-image: url(../img/backgrpund-productos.jpg);
+    background-size: 15%;
+}
+
+h1{
+    text-align: center;
+    color: white;
+}
+
+h4{
+    font-size: 16px;
+    font-weight: 700;
+    color: #ffae00;
+}
+
+header{
+    padding: 5px;
+    background: #ffae00;
+    display: inline-flexbox;
+    text-align: center;
+}
+
+.header-cartimg-div{
+    position:relative;
+    margin-right: 40px;
+
+}
+
+@media (min-width: 650){
+    header{
+        text-align: left;
+        /* background: lightsalmon; */
+    }
+}
+
+.borrar-item-cart{
+    background: rgb(151, 0, 0);
+    border-radius: 50%;
+    padding: 5px 10px;
+    text-decoration: none;
+    color: rgb(255, 255, 255);
+    font-weight: bold;
+    
+}
+
+ul{
+    list-style: none;
+}
+
+.hero{
+    height: 300px;
+    background-image: url(../img/hero-fondo.jpg);
+    background-position: center;
+    background-repeat: no-repeat;
+    background-size: 140%;
+    padding-top: 0;
+    padding-bottom: 0;
+}
+
+.encabezado{
+    margin: 12px 0;
+    color: #ffffff;
+    font-size:x-large;
+    background-color: #363636c9;
+    
+}
+
+body .menu-carrito{
+    position: relative;
+    margin-right: -30px;
+}
+
+.menu-carrito #carrito{
+   display: none;
+
+}
+
+.menu-carrito .countItemsCart{
+    position: absolute;
+    background: rgb(255, 136, 0);
+    border-radius: 50%;
+    padding: 1px 8px;
+    text-decoration: none;
+    color: rgb(0, 0, 0);
+    font-weight: bold;
+    margin-left: -10px;
+    margin-top: 10px;
+ }
+
+
+.menu-carrito #carrito{
+    display: block;
+    color: white;
+    position: absolute;
+    right: 0;
+    top: 100%;
+    z-index: 1;
+    background: #000000;
+    padding: 20px;
+}
+
+.borrar-pedido{
+    color: rgb(255, 255, 255);
+}
+.borrar-pedido:hover{
+    color: rgb(255, 0, 0);
+}
+.confirmar-pedido{
+    color: #ffae00;
+}
+.confirmar-pedido:hover{
+    color: #ffae00;
+    font-size: 90%;
+    background: #424242;
+    transition: 0.5s;
+}
+.carrito-vacio{
+    padding: 10px;
+    text-align: center;
+    background: #ffae00;
+    border-radius: 10px;
+    color: black;
+    font-weight: bold;
+}
+
+.totalCartLabel{
+    text-align: right;
+    font-weight: bold;
+    padding-right: 60px;
+}
+
+.contenido-hero{
+    color: white;
+    margin-top: 00px;
+
+}
+
+.contenido-hero img{
+    
+    max-width: 200px;
+    margin-top: 40px;
+
+    
+}
+
+
+/* .contenido-hero form{
+    position: relative;
+    margin-bottom: 0px;
+
+}
+.contenido-hero form .submit-buscador{
+    position: absolute;
+    right: 0;
+    top: 0;
+    height: 100%;
+    padding: 0;
+    display: block;
+    text-indent: -999999999px;
+    width: 50px;
+    background-image: url(../img/lupa.png);
+    background-position: right center;
+    background-repeat: no-repeat;
+    border: none;
+}
+
+.contenido-hero form #buscador{
+    margin: 0;
+    height: 40px;
+} */
+
+.barra{
+
+    background: #ffae00;
+    height: 60px;
+    text-align: center;
+    color: white;
+    font-weight: normal;
+}
+
+.barra .armar-pizza{
+    
+    margin-top: 10px;
+    background-color:transparent;
+    font-size: larger;
+    color: white;
+    border: 0;
+    border-radius: 0;
+    animation-name: zoom-text;
+    animation-duration: 1.8s;
+    animation-iteration-count: infinite ;
+}
+
+.barra .armar-pizza:hover{
+    font-size: x-large;
+    animation-iteration-count: initial;
+}
+
+@keyframes zoom-text {
+    0% {font-size: larger;;}
+    50% {font-size: x-large;}
+    100% {font-size: larger;;}
+  }
+
+
+body .checkout-modal{
+    opacity: 1;
+    width: 100%;
+    height: 100%;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    background-color: rgba(0, 0, 0, 0.6);
+}
+
+.checkout-modal{
+    position: fixed;
+    top: 0;
+    left: 0;
+    transition: all 500ms ease;
+    z-index: 100;
+}
+
+.checkout-modal .checkout-title{
+    display: inline-flex;
+    background-color: #ffae00;
+    height: 30px;
+    
+} 
+
+.checkout-title h7{
+    margin: auto;
+    justify-content: center;
+    align-items: center;
+    font-weight: bold;
+}
+
+
+.contenedor-checkout-modal{
+    width: 350px;
+    height: 530px;
+    margin: auto;
+    background-color: cornsilk;
+    box-shadow: 1px 7px 25px rgba(0, 0, 0, 0.6);
+    transition: all 500ms ease;
+    justify-content: center;
+    align-items: center;
+
+}
+
+.contenedor-checkout-modal-sub{
+    margin: auto;
+    justify-content: center;
+    align-items: center;
+ 
+}
+
+.contenedor-checkout-modal-sub .checkout-title-div{
+    text-align: center;
+    font-weight: bold;
+    
+    background-color: #ffae00;
+    opacity: 0.5;
+    margin-bottom: 5px;
+}
+
+.checkout-payment-div{
+    padding-top: 10px;
+    padding-bottom: 10px;
+}
+
+.checkout-payment-div div{
+    display: inline-flex;
+}
+
+.checkout-payment-div #checkout-payment-cash{
+    margin-left: 18px;
+}
+.line-div{
+    height: 1px;
+    background-color: rgb(43, 43, 43);
+    opacity: 0.1;
+    margin-bottom: 12px;
+
+}
+
+
+.payment-type-div{
+    position: relative;
+    align-items:baseline;
+    margin-left: 10px;
+}
+.payment-type-div label{
+
+    margin-left: 5px;
+}
+.checkout-shipping-table{
+    margin-left: 5px;
+}
+
+.checkout-shipping-table td{
+    align-items: center;
+    align-content: center;
+    padding: 5px 5px 5px 5px;
+}
+
+
+.contenedor-checkout-modal-sub #checkout-confirm-button{
+    margin: 5px 5px 5px 5px;
+    width: 340px;
+    margin-top: 11px;
+}
+
+.contenedor-checkout-modal form{
+    margin: auto;
+    background-color: cornsilk;
+    transition: all 500ms ease;
+    height: 400px;
+    width: 334px;
+    justify-content: center;
+    align-items: center;
+    overflow: hidden;
+    overflow-y: scroll;
+    margin-left: 8px;
+    margin-right: 8px;
+    margin-top: 10px;
+    padding-right: 8px;
+}
+
+.checkout-finalamount-div{
+    text-align: center;
+    font-weight: bold;
+    margin-top: 10px;
+    background-color: #ffae00;
+}
+
+
+
+
+
+/* 
+.lista-ingredientes{
+    display: block; 
+    position: relative;
+    
+}  */
+
+body .ingredientes-modal{
+    width: 100%;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    background-color: rgba(0, 0, 0, 0.6);
+    
+    
+}
+
+.ingredientes-modal{
+    position:fixed;
+    top: 0;
+    left: 0;
+    transition: all 500ms ease;
+    z-index: 100;
+    
+}
+
+.ingredientes-modal .lista-ingredientes{
+    width: 410px;
+    height: 100vh;
+    margin: auto;
+    padding-left: 5px;
+    padding-right: 5px;
+    background-color: rgb(255, 255, 255);
+    box-shadow: 1px 7px 25px rgba(0, 0, 0, 0.6);
+    transition: all 500ms ease;
+    font-size: small;
+    overflow: hidden;
+    overflow-y: scroll;
+    
+}
+
+.lista-ingredientes td{
+    padding-top: 5px;
+    padding-bottom: 5px;
+    padding-left: 0;
+    padding-right: 0;
+
+}
+
+#customProductNotes{
+    
+    margin: auto;
+    background-color:#ffae0042;
+    margin-top: -20px;
+    
+}
+
+
+.icono{
+    background-repeat: no-repeat;
+    background-position: left center;
+    padding: 0;
+    background-size: 40px;
+    margin: 0;
+    text-align: center;
+
+}
+.icono1{
+    background-image: url(../img/icono-regla.png);
+}
+.icono2{
+    background-image: url(../img/icono-ingredientes.png);
+}
+.icono3{
+    background-image: url(../img/icono3.png);
+}
+
+.producto{
+    background-color: rgb(44, 44, 44) ;
+    padding: 5px;
+    /* --------------------- */
+    
+    
+
+}
+#lista-productos .row{
+    margin-bottom: 0;
+    
+}
+
+.lista-productos{
+    /* display: ; */ /* ------------------------------------------------------------------------------ */
+    padding-left: 10px;
+    padding-right: 10px;
+    
+}
+
+.info-producto{
+    color: rgb(255, 255, 255);
+    padding: 5px;
+    display: inline-block;
+    
+}
+
+.info-producto .precio{
+    padding-left: 10px;
+    padding-right: 60px;
+    text-decoration: line-through;
+    font-size: 18px;
+    font-weight: bold;
+    margin-top: 10px;
+}
+.info-producto .productQty{
+    color: black;
+    font-weight: bold;
+    width: 55px;
+}
+
+.info-producto .descripcionProducto{
+     height: 100px;
+
+}
+
+
+
+.inputQty{
+    width: 60px;
+
+}
+
+
+.bottomComponentsTable .trTotal{
+    background-color:#ffae00;
+    font-weight: bold;
+    height: 20px;
+}
+
+.oculto{
+    visibility: hidden;
+}
+
+.mostrar{
+    visibility: visible;
+}
+
+.no-display{
+    display: none;
+}
+
+.display{
+    display: inline-block;
+}
