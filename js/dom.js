@@ -1,7 +1,7 @@
 //MODULES IMPORTED----------------------------------------------------------------------------------------------------------------------------
 import {CustomProduct, addComponents, selectComponent, products, addNewProduct, unselectComponent, unselectAllComponents, components} from "./product.js";
 import {saveToLocalStorage, addNewElement, getElementDom, getAllElementsDom} from "./globalfunctions.js"
-import {addToCart, removeFromCart, loadCartFromLocalStorage} from './cart.js';
+import {cart} from './cart.js';
 
 
 
@@ -219,23 +219,22 @@ export const updateProductsCartDom=()=>{
     getElementDom('#cartTable').innerHTML=''; //Elimino todos los productos del cart
     getElementDom('#totalAmountCart').textContent='0'; //Pongo en 0 el importe total
 
-    if(window.cart!=null){
-        for (const item of window.cart) {//Recorro todos los items del cart
-            cartTotalAmount+=item.subTotalAmount; //Calculo el importe total
-            addProductToCartDom(item,cartTotalAmount); //Cargo el elemento al DOM
-        }
+    
+    for (const item of cart.products) {//Recorro todos los items del cart
+        cartTotalAmount+=item.subTotalAmount; //Calculo el importe total
+        addProductToCartDom(item,cartTotalAmount); //Cargo el elemento al DOM
     }
+    
 
     //Actualizo el numero de productos que contiene el cart en el DOM:
-    if(window.cart!=null){
-        $('.countItemsCart')[0].textContent=window.cart.length
-    }
+    $('.countItemsCart')[0].textContent=cart.products.length
+    
     
     //Actualizo los Listener de los botones para borrar producto del cart
     updateCartButtons() // <- this module
 
     //Gardo el cart en el LocalStorage
-    saveToLocalStorage('CART', window.cart); // <- globalfunctions.js
+    saveToLocalStorage('CART', cart.products); // <- globalfunctions.js
 
 }
 
@@ -245,7 +244,7 @@ const updateCartButtons= ()=>{
     cartDeleteProductButtonColection.forEach((element)=>{ //por cada boton:
         element.addEventListener('click', ()=>{ //creo el evento Listener
             //Elimino el producto desde el array cart
-            removeFromCart(element.dataset.cartid) // <- cart.js
+            cart.removeFromCart(element.dataset.cartid) // <- cart.js
         })
     })
 }

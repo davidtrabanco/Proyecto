@@ -3,9 +3,9 @@ import Order from './order.js';
 import Vendor from "./vendor.js";
 import {CustomProduct, addComponents, selectComponent, products, addNewProduct, unselectComponent, components} from "./product.js";
 import {addAllComponentsToDom, addAllProductsToDom, initComponentsDom, addItemCheckoutAmount} from "./dom.js"
-import {addToCart, loadCartFromLocalStorage} from './cart.js';
 import {getElementDom, getAllElementsDom} from "./globalfunctions.js"
 import {animationToCartDom} from "./animations.js";
+import {cart} from "./cart.js";
 
 
 //=========================================================================================================
@@ -14,11 +14,6 @@ import {animationToCartDom} from "./animations.js";
 const vendor = new Vendor();
 const order = new Order();//Creo una order para trabajar:
 const customProduct = new CustomProduct("Pizza Personalizada",""); //Creo un customProduct para trabajar en caso de haber productos personalizados:
-
-
-window.cart=[];//Arrary con los productos seleccionados por el cliente
-
-
 
 //Agrego Productos armados TEMPORAL:
 addNewProduct("Muzzarella","Salsa, muzzarella, aceitunas, orégano", 390,"img/pizza-margherita.jpg"); // <- product.js
@@ -47,7 +42,7 @@ vendor.getVendorInfo(); // <- vendor.js
 order.customer.loadCustomerInfoLs(); //<- customer.js
 
 //Cargo el carrito si existe en el Local Storage:
-loadCartFromLocalStorage(); // <- cart.js
+cart.loadCartFromLocalStorage(); // <- cart.js
 
 //=========================================================================================================
 // DOM LOAD ↓↓↓↓↓

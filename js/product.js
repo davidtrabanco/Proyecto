@@ -1,5 +1,5 @@
 import {checkMandatoryComponents, updateTotalComponentsSelectedDom, initComponentsDom} from "./dom.js"
-import {addToCart, loadCartFromLocalStorage} from './cart.js';
+import {cart} from './cart.js';
 
 
 //=========================================================================================================
@@ -23,7 +23,7 @@ export class Product{
             this.confirmComponentsSelected() //Primero creo el producto con los componenetes seleciconados
         }
         //Llamo al método addToCart de la clase Order y le envío el Ob Producto con la cantidad y notas:
-        addToCart(this,quantity,option); // <- order.js
+        cart.addToCart(this,quantity,option); // <- cart.js
         
     }
 } 
