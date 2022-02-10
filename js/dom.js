@@ -19,7 +19,7 @@ const addComponentToDom = (objComponent)=> {
     const elementTdPrice = addNewElement('td') //<td> precio
     const elementTdInput = addNewElement('td') //<td> contiene input + <span>
     const elementInput = addNewElement('input') //<input> con checkbox
-    const elementSpanInput = addNewElement('span') //<span> etiqueta para el input
+    const elementLabelInput = addNewElement('label') //<span> etiqueta para el input
 
     //Asigno las variables a los elementos:
     elementTr.className="component";
@@ -28,7 +28,8 @@ const addComponentToDom = (objComponent)=> {
     elementImg.width='100' //asigno el tamaño de la img
     elementTdName.textContent=objComponent.name; //Asigno el nombre al <td>
     elementTdPrice.textContent=`$${objComponent.price}`; //Asigno el precio al <td>
-    elementSpanInput.textContent=' agregar' //etiqueta para el checkbox
+    elementLabelInput.textContent='A' //etiqueta para el checkbox
+    elementLabelInput.setAttribute('for',`compCheckboxId${objComponent.id}`);
     elementInput.type='checkbox' //configuro el input como checkbox
     elementInput.className="componentCheckbox";
     elementInput.setAttribute('data-componentId', objComponent.id);
@@ -48,12 +49,14 @@ const addComponentToDom = (objComponent)=> {
         elementTr.appendChild(elementTdName); //agrego el <td>
 
         //Agrego <td> con precio
+        elementTdPrice.id='price-td-componenet'
         elementTr.appendChild(elementTdPrice); //agrego el <td>
 
-        //Agrego <td> con input + etiqueta <span>
+        //Agrego <td> con input + etiqueta <label>
         elementTr.appendChild(elementTdInput); //agrego el <td>
+            elementTdInput.id='checkbox-td-componenet'
             elementTdInput.appendChild(elementInput); //Agrego el <input>
-            elementTdInput.appendChild(elementSpanInput); //Agrego <span> etiqueta del input
+            /* elementTdInput.appendChild(elementLabelInput); //Agrego <label> etiqueta del input */
 }
 
 //Función para agregar todos los componenetes al DOM

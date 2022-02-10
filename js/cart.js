@@ -53,5 +53,5 @@ class Cart{
     }
 }
 
-
+//creo la variable cart
 export const cart= new Cart();

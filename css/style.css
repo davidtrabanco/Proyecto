@@ -340,16 +340,24 @@ body .checkout-modal{
     background-color: #ffae00;
 }
 
+#componentsTable td{
+    margin: 0;
+    padding: 0;
 
+}
 
+#componentsTable input{
+    margin: 0;
+    padding: 0;
 
+}
 
-/* 
-.lista-ingredientes{
-    display: block; 
-    position: relative;
-    
-}  */
+#price-td-componenet{
+    text-align: center;
+}
+#checkbox-td-componenet{
+    text-align: center;
+}
 
 body .ingredientes-modal{
     width: 100%;
