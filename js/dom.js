@@ -173,7 +173,7 @@ export const addAllProductsToDom=()=>{
 export const addProductToCartDom=(order,cartTotalAmount)=>{
 
     //Creo los elementos
-    const elementTbody=addNewElement('tbody')//<tbody> tabla que contiene el producto
+    /* const elementTbody=addNewElement('tbody')//<tbody> tabla que contiene el producto */
     const elementTr = addNewElement('tr')//<tr> row que contiene al producto
     const elementTdTitle = addNewElement('td') //<td> titulo
     const elementTdDescription = addNewElement('td') //<td> descripción 
@@ -183,7 +183,7 @@ export const addProductToCartDom=(order,cartTotalAmount)=>{
     const elementAdelete=addNewElement('a'); //botón borrar item
 
     //Asigno los valores a los elementos
-    elementTbody.className=`tableCartId${order.cartId}`
+    /* elementTbody.className=`tableCartId${order.cartId}` */
     elementTdTitle.textContent= order.name; //Titulo del producto
     elementTdDescription.textContent=order.description; //Descripcion del producto
     elementTdDescription.className='descripcion'
@@ -198,9 +198,10 @@ export const addProductToCartDom=(order,cartTotalAmount)=>{
     //Agrego los elementos:
 
     //Selecciono la tabla para agregarle los elementos
-    const elementTableProducts = getElementDom('#cartTable')
+    /* const elementTableProducts = getElementDom('#cartTable') */
+    const elementTbody= getElementDom('#cartTable');
 
-    elementTableProducts.appendChild(elementTbody)
+    /* elementTableProducts.appendChild(elementTbody) */
         elementTbody.appendChild(elementTr)
             elementTr.appendChild(elementTdTitle)
             elementTr.appendChild(elementTdDescription)

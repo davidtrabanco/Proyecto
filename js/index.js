@@ -1,7 +1,7 @@
 //Importo módulos:
 import Order from './order.js';
 import Vendor from "./vendor.js";
-import {CustomProduct, addComponents, selectComponent, products, addNewProduct, unselectComponent, components} from "./product.js";
+import {CustomProduct, addComponents, selectComponent, products, addNewProduct, unselectComponent, components, Product} from "./product.js";
 import {addAllComponentsToDom, addAllProductsToDom, initComponentsDom, addItemCheckoutAmount} from "./dom.js"
 import {getElementDom, getAllElementsDom} from "./globalfunctions.js"
 import {animationToCartDom} from "./animations.js";
@@ -15,14 +15,6 @@ const vendor = new Vendor();
 const order = new Order();//Creo una order para trabajar:
 const customProduct = new CustomProduct("Pizza Personalizada",""); //Creo un customProduct para trabajar en caso de haber productos personalizados:
 
-//Agrego Productos armados TEMPORAL:
-addNewProduct("Muzzarella","Salsa, muzzarella, aceitunas, orégano", 390,"img/pizza-margherita.jpg"); // <- product.js
-addNewProduct("Fugazzetta","Salsa, muzzarella, aceitunas, orégnao, aros de cebolla", 440,"img/pizza-margherita.jpg"); // <- product.js
-addNewProduct("Calabresa","Salsa, muzzarella, aceitunas, orégnao, salame milán, morrones", 480,"img/pizza-margherita.jpg"); // <- product.js
-addNewProduct("Napolitana","Salsa, muzzarella, aceitunas, orégnao, rodajas de tomate, morrones", 510,"img/pizza-margherita.jpg"); // <- product.js
-addNewProduct("Palmitos","Salsa, muzzarella, aceitunas, orégnao, palmitos, salsa golf", 490,"img/pizza-margherita.jpg"); // <- product.js
-addNewProduct("Especial","Salsa, muzzarella, jamón, aceitunas, orégnao", 490,"img/pizza-margherita.jpg"); // <- product.js
-addNewProduct("Cuatro Quesos","Salsa, muzzarella, roquefort, parmesano, fontina, aceitunas, orégnao", 490,"img/pizza-margherita.jpg"); // <- product.js
 
 //Agrego Componentes (ingredientes) TEMPORAL:
 addComponents("Masa con salsa",200,"img/pizza-cuatroquesos.jpg",true); // <- product.js
@@ -31,6 +23,8 @@ addComponents("Cebolla",80,"img/pizza-cuatroquesos.jpg",false); // <- product.js
 addComponents("Palmitos",120,"img/pizza-cuatroquesos.jpg",false); // <- product.js
 addComponents("Jamón",140,"img/pizza-cuatroquesos.jpg",false); // <- product.js
 addComponents("Ananá",160,"img/pizza-cuatroquesos.jpg",false); // <- product.js
+
+console.log(JSON.stringify(components));
 
 //=========================================================================================================
 // SET INFORMATION ↓↓↓↓↓
@@ -47,8 +41,7 @@ cart.loadCartFromLocalStorage(); // <- cart.js
 //=========================================================================================================
 // DOM LOAD ↓↓↓↓↓
 //=========================================================================================================
-//Agrego todos los productos al DOM
-addAllProductsToDom(); // <- dom.js
+
 
 //Cargo todos los componentes al DOM
 addAllComponentsToDom(); // <- dom.js
@@ -104,21 +97,6 @@ $('.borrar-seleccion').click((e)=>{
 
     //Inicializo los componentes
     initComponentsDom(); // <- dom.js
-})
-//--------------------------------------------------------------------------------------------------------
-
-// PRODUCTS------------------------------------------------------------------------------------------------
-//Botón para confirmar la compra de un producto:
-const productsBuyButtonColection = getAllElementsDom('.agregar-carrito') //Creo la coleccion con todos los elementos botones para comprar
-productsBuyButtonColection.forEach((element) => { //Por cada uno de los botones (elementos):
-    element.addEventListener('click',(e)=>{ //Creo el Listener click 
-        //1ro Obtengo la cantidad del producto seleccionada:
-        const qty=getElementDom(`#productIdQty${element.dataset.productid}`).value
-        //2do llamo a la funcion que agrega el producto a la orden y luego al carrito
-        products[element.dataset.productid].addToOrder(qty,'nada') // <- product.js
-        //Ejecuto la animación:
-        animationToCartDom(e);
-    })
 })
 //--------------------------------------------------------------------------------------------------------
 
@@ -243,7 +221,7 @@ $('#onlinepay-shipping-radio').trigger('change');//Pago electronico
 
 
 
- 
+
 
 
 /* Notas:

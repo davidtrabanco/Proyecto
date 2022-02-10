@@ -34,7 +34,7 @@
                             
                             <div id="carrito" style="display: none">
                                 <p class="carrito-vacio">Comanda</p>
-                                <table class="u-full-width" id="cartTable">
+                                <table class="u-full-width" >
                                     <thead>
                                         <tr>
                                             <th>Pizza</th>
@@ -43,16 +43,12 @@
                                             <th>Precio</th>
                                         </tr>
                                     </thead>
-                                    <!-- <tbody>
-                                        <tr>
-                                            <td>  Pizza con palmitos</td>
-                                            <td>Salsa, muzzarella, aceitunas, orégano</td>
-                                            <td>3</td>
-                                            <td>$15</td>
-                                            <td><a href="#" class="borrar-item">X</a></td>
-                                        </tr>
-                                    </tbody> -->
-
+                                    <tbody id="cartTable">
+                                        
+                                        <!-- PRODUCTOS CART -->
+                             
+                                    </tbody>
+                                    
                                     
                                     
                                 </table>
@@ -283,6 +279,10 @@
 
     </footer>
 
+    <script type="module" src="js/index.js"></script>
+    <script type="module" src="js/product.js"></script>
+    
+    <script type="module" src="js/dom.js"></script>
     <script type="module" src="js/cart.js"></script>
     <script type="module" src="js/order.js"></script>
     
@@ -291,12 +291,9 @@
     <script type="module" src="js/shipping.js"></script>
     <script type="module" src="js/payment.js"></script>
     <script type="module" src="js/customer.js"></script>
-    <script type="module" src="js/product.js"></script>
-    
-    <script type="module" src="js/dom.js"></script>
     
     <script type="module" src="js/globalfunctions.js"></script>
-    <script type="module" src="js/index.js"></script>
+    
     
     
 </body>

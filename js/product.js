@@ -1,5 +1,7 @@
-import {checkMandatoryComponents, updateTotalComponentsSelectedDom, initComponentsDom} from "./dom.js"
+import {addAllProductsToDom, updateTotalComponentsSelectedDom, initComponentsDom} from "./dom.js"
 import {cart} from './cart.js';
+import {animationToCartDom} from "./animations.js";
+import {getAllElementsDom,getElementDom} from "./globalfunctions.js";
 
 
 //=========================================================================================================
@@ -67,6 +69,7 @@ export const addNewProduct = (title, description, price, img) => {
     const productId=products.length
     const productTemp = new Product(productId, title, description, price, img);
     products.push(productTemp);
+    
 }
 
 //Array para almacenar los componentes:------------------------------------------------
@@ -107,8 +110,39 @@ export const unselectAllComponents = () => {
     components.map((item)=>item.selected=false)
 }
 
+//Función para crear los Listeners de los botones COMPRAR
+const productsBuyButtonListeners=()=>{
+    const productsBuyButtonColection = getAllElementsDom('.agregar-carrito') //Creo la coleccion con todos los elementos botones para comprar
+    productsBuyButtonColection.forEach((element) => { //Por cada uno de los botones (elementos):
+        element.addEventListener('click',(e)=>{ //Creo el Listener click 
+            //1ro Obtengo la cantidad del producto seleccionada:
+            const qty=getElementDom(`#productIdQty${element.dataset.productid}`).value
+            //2do llamo a la funcion que agrega el producto a la orden y luego al carrito
+            products[element.dataset.productid].addToOrder(qty,'NN') // <- product.js
+            //Ejecuto la animación:
+            animationToCartDom(e);
+        })
+    })
+}
 
-
+//Agrego Productos desde el archivo JSON:
+$.ajax({
+    type: "GET",
+    url: "./json/products.json",
+    success:  (responsive) => {
+        let productsBd=responsive;
+        //Recorro el array con los productos
+        for (const productBd of productsBd) {
+            //Agrego cada uno al arrary products:
+            products.push(new Product(productBd.id, productBd.name,productBd.description,productBd.price,productBd.imageUrl))
+        } 
+        addAllProductsToDom(); //Agrego todos los productos al DOM
+        productsBuyButtonListeners(); //Agrego los Listeners a los botones
+    },
+    error: (error)=>{
+        console.error(error);
+    }
+});
 
 
 
