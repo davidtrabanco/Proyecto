@@ -19,10 +19,28 @@ const customProduct = new CustomProduct("Pizza Personalizada",""); //Creo un cus
 //Agrego Componentes (ingredientes) TEMPORAL:
 addComponents("Masa con salsa",200,"img/pizza-cuatroquesos.jpg",true); // <- product.js
 addComponents("Muzzarella",190,"img/pizza-cuatroquesos.jpg",false); // <- product.js
-addComponents("Cebolla",80,"img/pizza-cuatroquesos.jpg",false); // <- product.js
+addComponents("Provolone",140,"img/pizza-cuatroquesos.jpg",false); // <- product.js
+addComponents("Cheddar",140,"img/pizza-cuatroquesos.jpg",false); // <- product.js
+addComponents("Cebolla Caramelizada",80,"img/pizza-cuatroquesos.jpg",false); // <- product.js
+addComponents("Cebolla de Verdeo",80,"img/pizza-cuatroquesos.jpg",false); // <- product.js
+addComponents("Tomate cherry",80,"img/pizza-cuatroquesos.jpg",false); // <- product.js
+addComponents("Tomate en rodajas",80,"img/pizza-cuatroquesos.jpg",false); // <- product.js
+addComponents("Pimientos Asados",140,"img/pizza-cuatroquesos.jpg",false); // <- product.js
 addComponents("Palmitos",120,"img/pizza-cuatroquesos.jpg",false); // <- product.js
-addComponents("Jamón",140,"img/pizza-cuatroquesos.jpg",false); // <- product.js
+addComponents("Rúcula",140,"img/pizza-cuatroquesos.jpg",false); // <- product.js
+addComponents("Albahaca",50,"img/pizza-cuatroquesos.jpg",false); // <- product.js
+addComponents("Jamón Cocido",140,"img/pizza-cuatroquesos.jpg",false); // <- product.js
+addComponents("Jamón Crudo",140,"img/pizza-cuatroquesos.jpg",false); // <- product.js
 addComponents("Ananá",160,"img/pizza-cuatroquesos.jpg",false); // <- product.js
+addComponents("Panceta",80,"img/pizza-cuatroquesos.jpg",false); // <- product.js
+addComponents("Huevo Frito",120,"img/pizza-cuatroquesos.jpg",false); // <- product.js
+addComponents("Champignones",140,"img/pizza-cuatroquesos.jpg",false); // <- product.js
+addComponents("Salame",140,"img/pizza-cuatroquesos.jpg",false); // <- product.js
+addComponents("Pollo salteado",140,"img/pizza-cuatroquesos.jpg",false); // <- product.js
+addComponents("Aceitunas Verdes",50,"img/pizza-cuatroquesos.jpg",false); // <- product.js
+addComponents("Aceitunas Negras",50,"img/pizza-cuatroquesos.jpg",false); // <- product.js
+addComponents("Oregano",0,"img/pizza-cuatroquesos.jpg",false); // <- product.js
+
 
 console.log(JSON.stringify(components));
 
