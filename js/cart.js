@@ -43,10 +43,13 @@ class Cart{
 
     //Función para obtener el Cart pendiente desde el LocalStorage:
     loadCartFromLocalStorage=()=>{
-        //guardo en el array Cart los datos:
-        this.products = getFromLocalStorage('CART'); // <- globalfunctions.js
-        //Actualizo el carrito en el DOM:
-        updateProductsCartDom(); // <- dom.js
+        const cartTemp = getFromLocalStorage('CART');
+        if(cartTemp!=null){
+            //guardo en el array Cart los datos:
+            this.products ; // <- globalfunctions.js
+            //Actualizo el carrito en el DOM:
+            updateProductsCartDom(); // <- dom.js
+        }
     }
 }
 
