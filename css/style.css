@@ -47,6 +47,10 @@ header{
     
 }
 
+.bold{
+    font-weight: bold;
+}
+
 ul{
     list-style: none;
 }
@@ -215,7 +219,7 @@ body .checkout-modal{
     display: flex;
     justify-content: center;
     align-items: center;
-    background-color: rgba(66, 40, 1, 0.651);
+    background-color: rgba(0, 0, 0, 0.849);
 }
 
 .checkout-modal{
@@ -340,7 +344,15 @@ body .checkout-modal{
     background-color: #ffae00;
 }
 
+.td-amount-checkout{
+    text-align: center;
+}
 #componentsTable td{
+    margin: 0;
+    padding: 0;
+
+}
+#componentsTable tr{
     margin: 0;
     padding: 0;
 
@@ -350,6 +362,19 @@ body .checkout-modal{
     margin: 0;
     padding: 0;
 
+}
+
+.img-td-components{
+    margin: 0;
+}
+
+#componentsTable img{
+    object-fit:scale-down;
+    width: 100px;
+    height: 55px;
+    margin: 0;
+    margin-right: 5px;
+    padding: 0;
 }
 
 #price-td-componenet{

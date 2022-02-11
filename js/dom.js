@@ -23,7 +23,7 @@ const addComponentToDom = (objComponent)=> {
 
     //Asigno las variables a los elementos:
     elementTr.className="component";
-    /* elementTr.id=    ; */
+    elementTdImg.className='img-td-components'
     elementImg.src=objComponent.image; //asigno la URL de la imagen
     elementImg.width='100' //asigno el tamaño de la img
     elementTdName.textContent=objComponent.name; //Asigno el nombre al <td>
@@ -257,11 +257,12 @@ const updateCartButtons= ()=>{
 //=========================================================================================================
 // CHECKOUT MODAL FUNCTIONS  ↓↓↓↓↓
 //=========================================================================================================
-export const addItemCheckoutAmount=(description, amount)=>{
+export const addItemCheckoutAmount=(description, amount,bold)=>{
+    const classBold= bold ? "bold":"" //Si el valor "bold" recibido es TRUE, agrego dicha clase al <>
     const template=`
     <tr>
-        <td>${description}</td>
-        <td>$${amount}</td>
+        <td class="${classBold}">${description}</td>
+        <td class="td-amount-checkout ${classBold}">$${amount}</td>
     </tr>
     `
     $('#checkout-table-amount').append(template);

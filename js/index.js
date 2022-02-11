@@ -219,7 +219,7 @@ export const updateCheckoutAmount=()=>{
     }
 
     //5to muestro el total:
-        addItemCheckoutAmount('TOTAL', order.payment.totalAmount)
+        addItemCheckoutAmount('TOTAL', order.payment.totalAmount,true)
         $('#checkout-amount-label').text(order.payment.totalAmount)
 
     //6to si es en efectivo muestro el vuelto
