@@ -1,9 +1,8 @@
 body{
-    background-color: #000000;
+    background-color: #000000f8;
     padding-right: 0;
-
     background-image: url(../img/backgrpund-productos.jpg);
-    background-size: 15%;
+    background-size: 10%;
 }
 
 h1{
@@ -129,12 +128,25 @@ body .menu-carrito{
     border-radius: 10px;
     color: black;
     font-weight: bold;
+    margin: auto;
 }
 
 .totalCartLabel{
     text-align: right;
     font-weight: bold;
     padding-right: 60px;
+}
+
+#cartTable td{
+    text-align: center;
+    padding: 8px;
+    margin: auto;
+    font-size: small;
+}
+
+#carrito th{
+    text-align: center;
+    margin: auto;
 }
 
 .contenido-hero{
@@ -455,13 +467,37 @@ body .ingredientes-modal{
 }
 
 .producto{
-    background-color: rgb(44, 44, 44) ;
-    padding: 5px;
+    background-color: rgba(31, 29, 29, 0.911) ;
+    padding: 10px;
+    margin-top: 10px;
     /* --------------------- */
-    
-    
 
 }
+
+.producto img{
+    object-fit:cover;
+    height: 150px;
+    margin: 0;
+    padding: 0;
+}
+.producto .p-description-product{
+    object-fit:cover;
+    height: 70px;
+    margin: 0;
+    padding: 0;
+}
+
+.producto .p-price-product{
+    font-size: large;
+    text-align: left;
+    margin: 5px;
+}
+
+.producto .productQty{
+    margin: 5px;
+    margin-bottom: 15px;
+}
+
 #lista-productos .row{
     margin-bottom: 0;
     

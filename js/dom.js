@@ -142,8 +142,8 @@ export const addAllProductsToDom=()=>{
             <img src=${prodIterator.imageUrl} class="imagen-platillo u-full-width" alt="">
             <div class="info-producto">
                 <h4>${prodIterator.name}</h4>
-                <p>${prodIterator.description}</p>
-                <p><b>$${prodIterator.price}</b></p>
+                <p class="p-description-product">${prodIterator.description}</p>
+                <p class="p-price-product"><b>$${prodIterator.price}</b></p>
                 <input class="productQty three columns" type="number" value=1 id=productIdQty${prodIterator.id}>
             </div>
             <a class="u-full-width button button-primary input agregar-carrito" data-productId=${prodIterator.id}>Agregar</a>

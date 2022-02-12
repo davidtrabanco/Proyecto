@@ -4,75 +4,75 @@
         "name":"Muzzarella",
         "description":"Salsa, muzzarella, aceitunas, orégano",
         "price":580,
-        "imageUrl":"img/pizza-margherita.jpg"},
+        "imageUrl":"img/pmuzzarella.jpg"},
     {
         "id":1,
         "name":"Fugazzetta",
         "description":"Salsa, muzzarella, aceitunas, orégnao, aros de cebolla",
         "price":610,
-        "imageUrl":"img/pizza-margherita.jpg"
+        "imageUrl":"img/pfugazzeta.jpg"
     },
     {
         "id":2,
         "name":"Calabresa",
         "description":"Salsa, muzzarella, aceitunas, orégnao, salame milán, morrones",
         "price":680,
-        "imageUrl":"img/pizza-margherita.jpg"
+        "imageUrl":"img/pcalabresa.jpg"
     },
     {
         "id":3,
         "name":"Napolitana",
         "description":"Salsa, muzzarella, aceitunas, orégnao, rodajas de tomate, morrones",
         "price":600,
-        "imageUrl":"img/pizza-margherita.jpg"
+        "imageUrl":"img/pnapolitana.jpg"
     },
     {
         "id":4,
         "name":"Palmitos",
         "description":"Salsa, muzzarella, aceitunas, orégnao, palmitos, salsa golf",
         "price":685,
-        "imageUrl":"img/pizza-margherita.jpg"
+        "imageUrl":"img/ppalmitos.jpg"
     },
     {
         "id":5,
         "name":"Especial",
         "description":"Salsa, muzzarella, jamón, aceitunas, orégnao",
         "price":630,
-        "imageUrl":"img/pizza-margherita.jpg"
+        "imageUrl":"img/pespecial.jpg"
     },
     {
         "id":6,
         "name":"Cuatro Quesos",
         "description":"Salsa, muzzarella, roquefort, parmesano, fontina, aceitunas, orégnao",
         "price":680,
-        "imageUrl":"img/pizza-margherita.jpg"
+        "imageUrl":"img/p4quesos.jpeg"
     },
     {
         "id":7,
-        "name":"Champi",
+        "name":"Champignones",
         "description":"Salsa, muzzarella, champignones especiados, orégnao",
         "price":670,
-        "imageUrl":"img/pizza-margherita.jpg"
+        "imageUrl":"img/pchampignones.jpg"
     },
     {
         "id":8,
         "name":"Rúcula",
         "description":"Salsa, muzzarella, rúcula, tomates cherry, jamón crudo, aceitunas negras",
         "price":690,
-        "imageUrl":"img/pizza-margherita.jpg"
+        "imageUrl":"img/prucula.jpg"
     },
     {
         "id":9,
-        "name":"Americada",
-        "description":"Salsa, muzzarella, panceta, barbacoa, cebolla colorada, cheddar",
+        "name":"Americana",
+        "description":"Salsa, muzzarella, panceta, barbacoa, cebolla colorada, cheddar, huevo frito",
         "price":690,
-        "imageUrl":"img/pizza-margherita.jpg"
+        "imageUrl":"img/pamericana.jpg"
     },
     {
         "id":10,
         "name":"Margarita",
         "description":"Salsa, muzzarella, albahaca, panceta, aceitunas negras",
         "price":650,
-        "imageUrl":"img/pizza-margherita.jpg"
+        "imageUrl":"img/pmargarita.jpg"
     }
 ]

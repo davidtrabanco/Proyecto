@@ -21,6 +21,7 @@ addComponents("Masa con salsa",200,"img/masa.jpg",true); // <- product.js
 addComponents("Muzzarella",190,"img/mozzarella_fresco.jpg",false); // <- product.js
 addComponents("Provolone",140,"img/provolone.jpg",false); // <- product.js
 addComponents("Cheddar",140,"img/cheddar.png",false); // <- product.js
+addComponents("Roquefort",140,"img/roquefort.jpg",false); // <- product.js
 addComponents("Cebolla Caramelizada",80,"img/cebolla.jpg",false); // <- product.js
 addComponents("Cebolla de Verdeo",80,"img/verdeo.jpg",false); // <- product.js
 addComponents("Tomate cherry",80,"img/cherry.png",false); // <- product.js
@@ -32,13 +33,14 @@ addComponents("Albahaca",50,"img/albahaca.jpg",false); // <- product.js
 addComponents("Jamón Cocido",140,"img/jamoncocido.png",false); // <- product.js
 addComponents("Jamón Crudo",140,"img/jamoncrudo.png",false); // <- product.js
 addComponents("Ananá",160,"img/anana.jpg",false); // <- product.js
-addComponents("Panceta",80,"img/panceta.png",false); // <- product.js
+addComponents("Panceta",80,"img/panceta.jpg",false); // <- product.js
 addComponents("Huevo Frito",120,"img/huevos.jpg",false); // <- product.js
 addComponents("Champignones",140,"img/hongos.jpg",false); // <- product.js
 addComponents("Salame",140,"img/salame.jpg",false); // <- product.js
-addComponents("Pollo salteado",140,"img/pollo.jpg",false); // <- product.js
+addComponents("Pollo",140,"img/pollo.jpg",false); // <- product.js
 addComponents("Aceitunas Verdes",50,"img/aceitunas-verdes.jpg",false); // <- product.js
 addComponents("Aceitunas Negras",50,"img/aceitunas-negras.jpg",false); // <- product.js
+addComponents("Nueces",50,"img/nueces.jpg",false); // <- product.js
 addComponents("Oregano",0,"img/oregano.jpg",false); // <- product.js
 
 
