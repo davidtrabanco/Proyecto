@@ -135,6 +135,7 @@ $('.menu-carrito').hover(()=> { //Si uso toggle no me funciona bien
 $('#confimCart').click(()=>{
     updateCheckoutAmount();//Actualizo los importes a abonar, en variables y en DOM
     $('.checkout-modal').fadeIn('slow')
+    $('#carrito').slideUp();('fast');// out
 })
 //--------------------------------------------------------------------------------------------------------
 
@@ -230,6 +231,17 @@ export const updateCheckoutAmount=()=>{
     }
 }
 
+//Botón confirmar pedido:
+$('#checkout-confirm-button').click((e)=>{
+    alert('confirmado')
+})
+
+
+
+
+
+
+
 
 //Cargo valores por defecto:
 order.payment.setDiscount("%",10); //Descuento 10%
@@ -238,10 +250,6 @@ $('#shipping-req-radio').trigger('change'); //Envío requerido
 $('#onlinepay-shipping-radio').trigger('click');//Pago electronico
 $('#onlinepay-shipping-radio').trigger('change');//Pago electronico
 //--------------------------------------------------------------------------------------------------------
-
-
-
-
 
 
 /* Notas:
