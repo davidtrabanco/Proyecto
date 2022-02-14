@@ -2,7 +2,7 @@
 import Order from './order.js';
 import Vendor from "./vendor.js";
 import {CustomProduct, addComponents, selectComponent, products, addNewProduct, unselectComponent, components, Product} from "./product.js";
-import {addAllComponentsToDom, addAllProductsToDom, initComponentsDom, addItemCheckoutAmount} from "./dom.js"
+import {addAllComponentsToDom, addAllProductsToDom, initComponentsDom, addItemCheckoutAmount, whatsappProducts, whatsappAmounts} from "./dom.js"
 import {getElementDom, getAllElementsDom} from "./globalfunctions.js"
 import {animationToCartDom} from "./animations.js";
 import {cart} from "./cart.js";
@@ -43,8 +43,6 @@ addComponents("Aceitunas Negras",50,"img/aceitunas-negras.jpg",false); // <- pro
 addComponents("Nueces",50,"img/nueces.jpg",false); // <- product.js
 addComponents("Oregano",0,"img/oregano.jpg",false); // <- product.js
 
-
-console.log(JSON.stringify(components));
 
 //=========================================================================================================
 // SET INFORMATION ↓↓↓↓↓
@@ -194,9 +192,14 @@ $('#checkout-cashamount-text').change((e)=>{
     $('#cashpay-req-radio').trigger('change');//Pago electronico
 })
 
+let whatsappPayment
+let whatsappShipping
 
 //Función para actualizar la tabla (checkout) con el detalle a abonar por el cliente
 export const updateCheckoutAmount=()=>{
+    whatsappPayment="";
+    whatsappShipping="";
+
     //Calculo los importes finales:
     order.payment.calculateFinalAmount(order.shipping.required, vendor.shippingCost) // <-payment.js
 
@@ -214,11 +217,15 @@ export const updateCheckoutAmount=()=>{
     //3ro muestro Envío si lo hubiese
     if(order.shipping.required){
         addItemCheckoutAmount('Envío', vendor.shippingCost)
+        whatsappShipping+=`*Envío a domicilio*`
+    }else{
+        whatsappShipping+=`*Retiro personalmente*`
     }
 
     //4ro si es pago Online muestro interés
     if(order.payment.type=='OnLine'){
         addItemCheckoutAmount('Servicio Mercado Pago', order.payment.onLinePayment.serviceCost)
+        whatsappPayment=`*Mercado Pago*`
     }
 
     //5to muestro el total:
@@ -228,20 +235,17 @@ export const updateCheckoutAmount=()=>{
     //6to si es en efectivo muestro el vuelto
     if(order.payment.type=='cash'){
         addItemCheckoutAmount('vuelto', order.payment.cashPayment.exchange)
+        whatsappPayment=`*Efectivo*, pago con $${order.payment.cashPayment.cash}`
     }
 }
 
 //Botón confirmar pedido:
 $('#checkout-confirm-button').click((e)=>{
-    alert('confirmado')
+    const textWhatsapp=printOrder()
+
+    window.open(`https://wa.me/${vendor.phone}?text=${encodeURIComponent(textWhatsapp)}`)
+
 })
-
-
-
-
-
-
-
 
 //Cargo valores por defecto:
 order.payment.setDiscount("%",10); //Descuento 10%
@@ -253,6 +257,8 @@ $('#onlinepay-shipping-radio').trigger('change');//Pago electronico
 
 
 /* Notas:
+-Notas en el pedido de WSP y la descripcion de las pizzas custom
+
 -guardar valores por defecto (forma de pago/envio y notas)
 -validacion de datos en checkout
 -elegir checkbox por defecto
@@ -266,28 +272,22 @@ $('#onlinepay-shipping-radio').trigger('change');//Pago electronico
 
 
 //Imprimo la comanda para el restaurante:
-function printOrder() {
-    console.log(`
-    *** COMANDA ***
-    Cliente: ${customerName}
-    Domicilio: ${customerAddress}
-    Teléfono: ${customerMobilNumber}
-    Notas: ${customerNotes}
-    `)
-    for(let i=0; i<= itemsCountFor() ;i++){
-        console.log(`item: ${i+1} - ${itemsName[i]} - Precio: $${itemsPrice[i]}`)
-    }
-    console.log(`
-    SubTotal: $${subTotalAmount}
-    Descuento: - $${discount}
-    TOTAL: $${totalAmount()}
-    -----------------------------------------
-    Abona con: $${cash}
-    Vuelto: $${changeChashPayment()}
-    `)
-}
+function printOrder(){
+    if(order.shipping.notes!=""){whatsappShipping+=`\nNotas: ${order.shipping.notes}`}
 
-function whatsappMenssage() {
-    
-}
+    let text =`Hola! Les envío mi pedido, mis datos son:
+Nombre: *${order.customer.name}*
+Dirección: *${order.customer.address}*
+Teléfono: *${order.customer.phone}*
+
+_Comanda:_
+${whatsappProducts}
+_Entrega:_
+${whatsappShipping}
+_Forma de pago:_
+${whatsappPayment}\n
+${whatsappAmounts}`;
+
+    return text
+} 
 

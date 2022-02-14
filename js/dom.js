@@ -3,7 +3,8 @@ import {CustomProduct, addComponents, selectComponent, products, addNewProduct, 
 import {saveToLocalStorage, addNewElement, getElementDom, getAllElementsDom} from "./globalfunctions.js"
 import {cart} from './cart.js';
 
-
+export let whatsappProducts
+export let whatsappAmounts
 
 //=========================================================================================================
 // COMPONENTS FUNCTIONS ↓↓↓↓↓
@@ -218,21 +219,27 @@ export const addProductToCartDom=(order,cartTotalAmount)=>{
 
 //Función para actualizar los productos del Cart en el DOM desde el array cart
 export const updateProductsCartDom=()=>{
+    whatsappProducts=""
     let cartTotalAmount=parseFloat(0); //var utilizada para calcular el importe total del Cart
 
     getElementDom('#cartTable').innerHTML=''; //Elimino todos los productos del cart
     getElementDom('#totalAmountCart').textContent='0'; //Pongo en 0 el importe total
-
     
     for (const item of cart.products) {//Recorro todos los items del cart
         cartTotalAmount+=item.subTotalAmount; //Calculo el importe total
         addProductToCartDom(item,cartTotalAmount); //Cargo el elemento al DOM
+
+        //Creo el texto con los productos para posterior envíon por wsp:
+        whatsappProducts+=`*• ${item.quantity} x ${item.name}* ($${item.price}): *$${item.subTotalAmount}*\n`;
+        if(item.customProduct){
+            whatsappProducts+=`      _Ingredientes:_ ${item.description}\n`;
+            if(item.option!=""){whatsappProducts+=`     _Notas: ${item.option}_\n`};
+        }
+
     }
-    
 
     //Actualizo el numero de productos que contiene el cart en el DOM:
     $('.countItemsCart')[0].textContent=cart.products.length
-    
     
     //Actualizo los Listener de los botones para borrar producto del cart
     updateCartButtons() // <- this module
@@ -258,7 +265,9 @@ const updateCartButtons= ()=>{
 // CHECKOUT MODAL FUNCTIONS  ↓↓↓↓↓
 //=========================================================================================================
 export const addItemCheckoutAmount=(description, amount,bold)=>{
+    if(description=='SubTotal'){whatsappAmounts=''}
     const classBold= bold ? "bold":"" //Si el valor "bold" recibido es TRUE, agrego dicha clase al <>
+    const wspBold= bold ? "*":"_" //Si el valor "bold" recibido es TRUE, agrego dicha clase al <>
     const template=`
     <tr>
         <td class="${classBold}">${description}</td>
@@ -266,5 +275,8 @@ export const addItemCheckoutAmount=(description, amount,bold)=>{
     </tr>
     `
     $('#checkout-table-amount').append(template);
+
+    //Texto para envío del mensaje por wsp:
+    whatsappAmounts+=`${wspBold}${description} $${amount}${wspBold}\n`
 }
 

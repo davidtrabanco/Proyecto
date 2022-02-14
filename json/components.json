@@ -1,1 +1,27 @@
-[{"id":0,"name":"Masa con salsa","price":200,"image":"img/pizza-cuatroquesos.jpg","mandatory":true,"selected":false},{"id":1,"name":"Muzzarella","price":190,"image":"img/pizza-cuatroquesos.jpg","mandatory":false,"selected":false},{"id":2,"name":"Provolone","price":140,"image":"img/pizza-cuatroquesos.jpg","mandatory":false,"selected":false},{"id":3,"name":"Cheddar","price":140,"image":"img/pizza-cuatroquesos.jpg","mandatory":false,"selected":false},{"id":4,"name":"Cebolla Caramelizada","price":80,"image":"img/pizza-cuatroquesos.jpg","mandatory":false,"selected":false},{"id":5,"name":"Cebolla de Verdeo","price":80,"image":"img/pizza-cuatroquesos.jpg","mandatory":false,"selected":false},{"id":6,"name":"Tomate cherry","price":80,"image":"img/pizza-cuatroquesos.jpg","mandatory":false,"selected":false},{"id":7,"name":"Tomate en rodajas","price":80,"image":"img/pizza-cuatroquesos.jpg","mandatory":false,"selected":false},{"id":8,"name":"Pimientos Asados","price":140,"image":"img/pizza-cuatroquesos.jpg","mandatory":false,"selected":false},{"id":9,"name":"Palmitos","price":120,"image":"img/pizza-cuatroquesos.jpg","mandatory":false,"selected":false},{"id":10,"name":"Rúcula","price":140,"image":"img/pizza-cuatroquesos.jpg","mandatory":false,"selected":false},{"id":11,"name":"Albahaca","price":50,"image":"img/pizza-cuatroquesos.jpg","mandatory":false,"selected":false},{"id":12,"name":"Jamón Cocido","price":140,"image":"img/pizza-cuatroquesos.jpg","mandatory":false,"selected":false},{"id":13,"name":"Jamón Crudo","price":140,"image":"img/pizza-cuatroquesos.jpg","mandatory":false,"selected":false},{"id":14,"name":"Ananá","price":160,"image":"img/pizza-cuatroquesos.jpg","mandatory":false,"selected":false},{"id":15,"name":"Panceta","price":80,"image":"img/pizza-cuatroquesos.jpg","mandatory":false,"selected":false},{"id":16,"name":"Huevo Frito","price":120,"image":"img/pizza-cuatroquesos.jpg","mandatory":false,"selected":false},{"id":17,"name":"Champignones","price":140,"image":"img/pizza-cuatroquesos.jpg","mandatory":false,"selected":false},{"id":18,"name":"Salame","price":140,"image":"img/pizza-cuatroquesos.jpg","mandatory":false,"selected":false},{"id":19,"name":"Pollo salteado","price":140,"image":"img/pizza-cuatroquesos.jpg","mandatory":false,"selected":false},{"id":20,"name":"Aceitunas Verdes","price":50,"image":"img/pizza-cuatroquesos.jpg","mandatory":false,"selected":false},{"id":21,"name":"Aceitunas Negras","price":50,"image":"img/pizza-cuatroquesos.jpg","mandatory":false,"selected":false},{"id":22,"name":"Oregano","price":0,"image":"img/pizza-cuatroquesos.jpg","mandatory":false,"selected":false}]
+[
+    {"id":0,"name":"Masa con salsa","price":200,"image":"img/masa.jpg","mandatory":true,"selected":false},
+    {"id":1,"name":"Muzzarella","price":190,"image":"img/mozzarella_fresco.jpg","mandatory":false,"selected":false},
+    {"id":2,"name":"Provolone","price":140,"image":"img/provolone.jpg","mandatory":false,"selected":false},
+    {"id":3,"name":"Cheddar","price":140,"image":"img/cheddar.png","mandatory":false,"selected":false},
+    {"id":4,"name":"Roquefort","price":140,"image":"img/roquefort.jpg","mandatory":false,"selected":false},
+    {"id":5,"name":"Cebolla Caramelizada","price":80,"image":"img/cebolla.jpg","mandatory":false,"selected":false},
+    {"id":6,"name":"Cebolla de Verdeo","price":80,"image":"img/verdeo.jpg","mandatory":false,"selected":false},
+    {"id":7,"name":"Tomate cherry","price":80,"image":"img/cherry.png","mandatory":false,"selected":false},
+    {"id":8,"name":"Tomate en rodajas","price":80,"image":"img/tomate.jpg","mandatory":false,"selected":false},
+    {"id":9,"name":"Pimientos Asados","price":140,"image":"img/pimientos.jpg","mandatory":false,"selected":false},
+    {"id":10,"name":"Palmitos","price":120,"image":"img/palmitos.jpg","mandatory":false,"selected":false},
+    {"id":11,"name":"Rúcula","price":140,"image":"img/rucula.jpg","mandatory":false,"selected":false},
+    {"id":12,"name":"Albahaca","price":50,"image":"img/albahaca.jpg","mandatory":false,"selected":false},
+    {"id":13,"name":"Jamón Cocido","price":140,"image":"img/jamoncocido.png","mandatory":false,"selected":false},
+    {"id":14,"name":"Jamón Crudo","price":140,"image":"img/jamoncrudo.png","mandatory":false,"selected":false},
+    {"id":15,"name":"Ananá","price":160,"image":"img/anana.jpg","mandatory":false,"selected":false},
+    {"id":16,"name":"Panceta","price":80,"image":"img/panceta.jpg","mandatory":false,"selected":false},
+    {"id":17,"name":"Huevo Frito","price":120,"image":"img/huevos.jpg","mandatory":false,"selected":false},
+    {"id":18,"name":"Champignones","price":140,"image":"img/hongos.jpg","mandatory":false,"selected":false},
+    {"id":19,"name":"Salame","price":140,"image":"img/salame.jpg","mandatory":false,"selected":false},
+    {"id":20,"name":"Pollo","price":140,"image":"img/pollo.jpg","mandatory":false,"selected":false},
+    {"id":21,"name":"Aceitunas Verdes","price":50,"image":"img/aceitunas-verdes.jpg","mandatory":false,"selected":false},
+    {"id":22,"name":"Aceitunas Negras","price":50,"image":"img/aceitunas-negras.jpg","mandatory":false,"selected":false},
+    {"id":23,"name":"Nueces","price":50,"image":"img/nueces.jpg","mandatory":false,"selected":false},
+    {"id":24,"name":"Oregano","price":0,"image":"img/oregano.jpg","mandatory":false,"selected":false}
+]

@@ -17,7 +17,7 @@ export default class Vendor{
     //Temporalmente los asigno en la función:
     getVendorInfo = ()=>{
         this.name="Qué Pizza"
-        this.phone="3512274200"
+        this.phone="+5493512274200"
         this.shippingCost=120;
         this.mercadoPagoDaysAmountAvailable=0;
         this.updateShippingCostDom();

@@ -16,6 +16,7 @@ export class Product{
         this.description=description; //descripción
         this.price=parseFloat(price); //Precio
         this.imageUrl=img; //imagen
+        this.customProduct=false
     }
 
     //Método para agregar el producto seleccionado al carrito:
@@ -26,19 +27,19 @@ export class Product{
         }
         //Llamo al método addToCart de la clase Order y le envío el Ob Producto con la cantidad y notas:
         cart.addToCart(this,quantity,option); // <- cart.js
-        
     }
 } 
 
 //Clase para productos personalizados:
 export class CustomProduct extends Product{
-    constructor(name, description, price){ 
-        super(name, description, price) //Importo las propiedades del Objeto Producto
+    constructor(name, description, price, customProduct){ 
+        super(name, description, price,customProduct) //Importo las propiedades del Objeto Producto
         this.componentsSelected=[]; //Corresponde a los ingredientes seleccionado
     }
 
     //Método para crear el Producto en base a los componentes seleccionados:
     confirmComponentsSelected = () =>{
+        this.customProduct=true;
         //Asigno el nombre
         this.name=`Tu Pizza`
         //Inicializo las variables:
@@ -130,9 +131,8 @@ $.ajax({
     type: "GET",
     url: "./json/products.json",
     success:  (responsive) => {
-        let productsBd=responsive;
         //Recorro el array con los productos
-        for (const productBd of productsBd) {
+        for (const productBd of responsive) {
             //Agrego cada uno al arrary products:
             products.push(new Product(productBd.id, productBd.name,productBd.description,productBd.price,productBd.imageUrl))
         } 
@@ -144,5 +144,17 @@ $.ajax({
     }
 });
 
+//Agrego componentes desde JSON
+$.ajax({
+    type: "GET",
+    url: "./json/components.json",
+    success: (response) => {
 
+
+        
+    },
+    error: (error)=>{
+        console.error(error);
+    }
+});
 
