@@ -275,7 +275,7 @@ $('#onlinepay-shipping-radio').trigger('change');//Pago electronico
 function printOrder(){
     if(order.shipping.notes!=""){whatsappShipping+=`\nNotas: ${order.shipping.notes}`}
 
-    let text =`Hola! Les envío mi pedido, mis datos son:
+    let text =`Hola ${vendor.name}! Les envío mi pedido, mis datos son:
 Nombre: *${order.customer.name}*
 Dirección: *${order.customer.address}*
 Teléfono: *${order.customer.phone}*
