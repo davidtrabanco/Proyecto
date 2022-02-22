@@ -107,20 +107,20 @@
                 
                     <!-- DATOS DEL CLIENTE -->
                     
-                    <form class="customer-data-checkout" autocomplete="on">
+                    <form class="customer-data-checkout" id="id-form-checkout" autocomplete="on">
                         <div class="checkout-title-div">Tus Datos</div>
                         <div id="checkout-customerinfo-div" class="row">
                             <div >
                                 <label for="checkout-customer-name">Nombre</label>
-                                <input class="u-full-width" type="text" placeholder="Nombre" id="checkout-customer-name" name="name" autocomplete="name">
+                                <input class="u-full-width" type="text" required placeholder="Nombre" id="checkout-customer-name" name="name" autocomplete="name">
                             </div>
                             <div >
                                 <label for="checkout-customer-tel">Teléfono Movil</label>
-                                <input class="u-full-width" type="tel" placeholder="(0___) 15________" id="checkout-customer-tel" autocomplete="tel">
+                                <input class="u-full-width" type="tel" required pattern="[0-9]{10}" placeholder="(0___) 15________" id="checkout-customer-tel" autocomplete="tel">
                             </div>
                             <div>
                                 <label for="checkout-customer-address">Dirección de envío</label>
-                                <input class="u-full-width" type="text" placeholder="" id="checkout-customer-address" name="address" autocomplete="address">
+                                <input class="u-full-width" type="text" required placeholder="" id="checkout-customer-address" name="address" autocomplete="address">
                             </div>
                             <div >
                                 <label for="checkout-customer-email">e-mail</label>
@@ -186,7 +186,7 @@
                         
                     </form>
                 <div class="checkout-finalamount-div">Total $ <span id="checkout-amount-label">999</span></div>    
-                <input id="checkout-confirm-button" class="u-full-width button-primary checkout-confirm-button" type="button" value="Confirmar Pedido">
+                <input id="checkout-confirm-button" class="u-full-width button-primary checkout-confirm-button" type="submit" form="id-form-checkout" value="Confirmar Pedido">
             </div>
         </div>
 
@@ -294,6 +294,7 @@
     <script type="module" src="js/customer.js"></script>
     
     <script type="module" src="js/globalfunctions.js"></script>
+    <script src="//cdn.jsdelivr.net/npm/sweetalert2@11"></script>
     
     
     

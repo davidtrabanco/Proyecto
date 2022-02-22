@@ -1,10 +1,7 @@
 //Importo módulos:
 import Order from './order.js';
 import Vendor from "./vendor.js";
-import {CustomProduct, addComponents, selectComponent, products, addNewProduct, unselectComponent, components, Product} from "./product.js";
-import {addAllComponentsToDom, addAllProductsToDom, initComponentsDom, addItemCheckoutAmount, whatsappProducts, whatsappAmounts} from "./dom.js"
-import {getElementDom, getAllElementsDom} from "./globalfunctions.js"
-import {animationToCartDom} from "./animations.js";
+import { addItemCheckoutAmount, whatsappProducts, whatsappAmounts} from "./dom.js"
 import {cart} from "./cart.js";
 
 
@@ -13,36 +10,8 @@ import {cart} from "./cart.js";
 //=========================================================================================================
 const vendor = new Vendor();
 const order = new Order();//Creo una order para trabajar:
-const customProduct = new CustomProduct("Pizza Personalizada",""); //Creo un customProduct para trabajar en caso de haber productos personalizados:
-
-
-//Agrego Componentes (ingredientes) TEMPORAL:
-addComponents("Masa con salsa",200,"img/masa.jpg",true); // <- product.js
-addComponents("Muzzarella",190,"img/mozzarella_fresco.jpg",false); // <- product.js
-addComponents("Provolone",140,"img/provolone.jpg",false); // <- product.js
-addComponents("Cheddar",140,"img/cheddar.png",false); // <- product.js
-addComponents("Roquefort",140,"img/roquefort.jpg",false); // <- product.js
-addComponents("Cebolla Caramelizada",80,"img/cebolla.jpg",false); // <- product.js
-addComponents("Cebolla de Verdeo",80,"img/verdeo.jpg",false); // <- product.js
-addComponents("Tomate cherry",80,"img/cherry.png",false); // <- product.js
-addComponents("Tomate en rodajas",80,"img/tomate.jpg",false); // <- product.js
-addComponents("Pimientos Asados",140,"img/pimientos.jpg",false); // <- product.js
-addComponents("Palmitos",120,"img/palmitos.jpg",false); // <- product.js
-addComponents("Rúcula",140,"img/rucula.jpg",false); // <- product.js
-addComponents("Albahaca",50,"img/albahaca.jpg",false); // <- product.js
-addComponents("Jamón Cocido",140,"img/jamoncocido.png",false); // <- product.js
-addComponents("Jamón Crudo",140,"img/jamoncrudo.png",false); // <- product.js
-addComponents("Ananá",160,"img/anana.jpg",false); // <- product.js
-addComponents("Panceta",80,"img/panceta.jpg",false); // <- product.js
-addComponents("Huevo Frito",120,"img/huevos.jpg",false); // <- product.js
-addComponents("Champignones",140,"img/hongos.jpg",false); // <- product.js
-addComponents("Salame",140,"img/salame.jpg",false); // <- product.js
-addComponents("Pollo",140,"img/pollo.jpg",false); // <- product.js
-addComponents("Aceitunas Verdes",50,"img/aceitunas-verdes.jpg",false); // <- product.js
-addComponents("Aceitunas Negras",50,"img/aceitunas-negras.jpg",false); // <- product.js
-addComponents("Nueces",50,"img/nueces.jpg",false); // <- product.js
-addComponents("Oregano",0,"img/oregano.jpg",false); // <- product.js
-
+let whatsappPayment //var contiene mensaje de wsp con los importes
+let whatsappShipping //var contiene mensaje de wsp con datos de envio
 
 //=========================================================================================================
 // SET INFORMATION ↓↓↓↓↓
@@ -56,15 +25,6 @@ order.customer.loadCustomerInfoLs(); //<- customer.js
 //Cargo el carrito si existe en el Local Storage:
 cart.loadCartFromLocalStorage(); // <- cart.js
 
-//=========================================================================================================
-// DOM LOAD ↓↓↓↓↓
-//=========================================================================================================
-
-
-//Cargo todos los componentes al DOM
-addAllComponentsToDom(); // <- dom.js
-
-
 
 //=========================================================================================================
 // LISTENERs ↓↓↓↓↓
@@ -74,47 +34,6 @@ addAllComponentsToDom(); // <- dom.js
 //Botón para mostrar el menú para armar pizza personalizada
 $('.armar-pizza').click((e)=>{
     $('.ingredientes-modal').fadeIn('slow');
-})
-
-//Variable que contiene todos los checkbox de cada componente en el DOM:
-let componentsCheckboxColection=getAllElementsDom('input[class=componentCheckbox]')
-
-//Checkbox de componentes CLICK:
-componentsCheckboxColection.forEach((checkbox)=>{ //Selecciono todos los checkbox:
-    checkbox.addEventListener('change',()=>{ //Agrego la función listener al evento CHANGE en cada uno  
-        if(checkbox.checked){ //si está seleccionado el checkbox:
-            //llamo a la funcion que selecciona ese componente
-            selectComponent(checkbox.dataset.componentid); // <- product.js
-        }else{//si NO está seleccionado
-            //llamo a la funcion que desmarca ese componente
-            unselectComponent(checkbox.dataset.componentid); // <- product.js
-        }
-    })
-})
-
-//Boton para confirmar la compra de un producto Custom:
-getElementDom('#confirmCustomProduct').addEventListener('click',()=>{ //Selecciono el <confirmCustomProduct>
-    //Selecciono el elemento <textarea> con las notas del cliente
-    let inputNotes = getElementDom('#customProductNotes'); 
-    
-    //llamo la funcion para agregar el producto al cart
-    customProduct.addToOrder(1,inputNotes.value); // <- product.js
-
-    //Cierro la ventana con los componentes (ingredientes)
-    $('.ingredientes-modal').fadeOut('fast');
-    $('#carrito').slideDown('slow');
-    
-    //Inicializo los componentes
-    initComponentsDom(); // <- dom.js
-})
-
-//Botón cancelar un producto Custom:
-$('.borrar-seleccion').click((e)=>{
-    //Cierro la ventana con los componentes (ingredientes)
-    $('.ingredientes-modal').fadeOut('fast');
-
-    //Inicializo los componentes
-    initComponentsDom(); // <- dom.js
 })
 //--------------------------------------------------------------------------------------------------------
 
@@ -192,8 +111,35 @@ $('#checkout-cashamount-text').change((e)=>{
     $('#cashpay-req-radio').trigger('change');//Pago electronico
 })
 
-let whatsappPayment
-let whatsappShipping
+//Botón confirmar pedido:
+$('#id-form-checkout').submit((e)=> { 
+    e.preventDefault();
+    const textWhatsapp=printOrder()
+    window.open(`https://wa.me/${vendor.phone}?text=${encodeURIComponent(textWhatsapp)}`)
+
+    //Mensaje Alert con la confirmación
+    Swal.fire({
+        title: 'Pedido Armado en WhatsApp!',
+        text: "Envía el mensaje y aguarda la confirmación",
+        icon: 'success',
+        showCancelButton: false,
+        confirmButtonColor: '#3085d6',
+        confirmButtonText: 'Perfecto!'
+      }).then((result) => {
+        if (result.isConfirmed) {
+            cart.clearCart();//vacio el carrito para un nuevo pedido:
+            $('.checkout-modal').fadeOut('fast'); //Cierro la ventana
+        }
+      })
+});
+
+//--------------------------------------------------------------------------------------------------------
+
+
+//=========================================================================================================
+// FUNCTIONS ↓↓↓↓↓
+//=========================================================================================================
+
 
 //Función para actualizar la tabla (checkout) con el detalle a abonar por el cliente
 export const updateCheckoutAmount=()=>{
@@ -239,39 +185,8 @@ export const updateCheckoutAmount=()=>{
     }
 }
 
-//Botón confirmar pedido:
-$('#checkout-confirm-button').click((e)=>{
-    const textWhatsapp=printOrder()
 
-    window.open(`https://wa.me/${vendor.phone}?text=${encodeURIComponent(textWhatsapp)}`)
-
-})
-
-//Cargo valores por defecto:
-order.payment.setDiscount("%",10); //Descuento 10%
-$('#shipping-req-radio').trigger('click'); //Envío requerido
-$('#shipping-req-radio').trigger('change'); //Envío requerido
-$('#onlinepay-shipping-radio').trigger('click');//Pago electronico
-$('#onlinepay-shipping-radio').trigger('change');//Pago electronico
-//--------------------------------------------------------------------------------------------------------
-
-
-/* Notas:
--Notas en el pedido de WSP y la descripcion de las pizzas custom
-
--guardar valores por defecto (forma de pago/envio y notas)
--validacion de datos en checkout
--elegir checkbox por defecto
--Qty negativos
--Categorias de productos
-
--buscar imagenes
--quitar boton BORRAR PEDIDO
-
-*/
-
-
-//Imprimo la comanda para el restaurante:
+//Función para armar el texto del pedido:
 function printOrder(){
     if(order.shipping.notes!=""){whatsappShipping+=`\nNotas: ${order.shipping.notes}`}
 
@@ -291,3 +206,22 @@ ${whatsappAmounts}`;
     return text
 } 
 
+//--------------------------------------------------------------------------------------------------------
+
+
+//=========================================================================================================
+//Cargo valores por defecto:
+(function () {
+    order.payment.setDiscount("%",10); //Descuento 10%
+    $('#shipping-req-radio').trigger('click'); //Envío requerido
+    $('#shipping-req-radio').trigger('change'); //Envío requerido
+    $('#onlinepay-shipping-radio').trigger('click');//Pago electronico
+    $('#onlinepay-shipping-radio').trigger('change');//Pago electronico
+}());
+//--------------------------------------------------------------------------------------------------------
+
+
+/* Notas:
+-validacion de datos en checkout
+-Qty negativos
+*/

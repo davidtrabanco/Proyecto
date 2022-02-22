@@ -1,5 +1,5 @@
 //MODULES IMPORTED----------------------------------------------------------------------------------------------------------------------------
-import {CustomProduct, addComponents, selectComponent, products, addNewProduct, unselectComponent, unselectAllComponents, components} from "./product.js";
+import {products, components,unselectAllComponents} from "./product.js";
 import {saveToLocalStorage, addNewElement, getElementDom, getAllElementsDom} from "./globalfunctions.js"
 import {cart} from './cart.js';
 
@@ -91,9 +91,9 @@ export const checkMandatoryComponents=()=>{
     //Recorro la lista de componentes
     components.map((component) => {
         if(component.mandatory){ //si el component es obligatorio:
-            //llamo a la función que selecciona el componente y actualiza el precio
-            selectComponent(component.id) //<- product.js
-            
+            //llamo a la función que selecciona el componente y actualiza el precios
+            component.selectComponent(); //<- product.js
+
             //Marco el checkbox del componente como Checked en el DOM y lo bloqueo:
             let componentDom = getElementDom(`#compCheckboxId${component.id}`)
             componentDom.checked='true';
@@ -145,7 +145,7 @@ export const addAllProductsToDom=()=>{
                 <h4>${prodIterator.name}</h4>
                 <p class="p-description-product">${prodIterator.description}</p>
                 <p class="p-price-product"><b>$${prodIterator.price}</b></p>
-                <input class="productQty three columns" type="number" value=1 id=productIdQty${prodIterator.id}>
+                <input class="productQty three columns" type="number" min=1 value=1 id=productIdQty${prodIterator.id}>
             </div>
             <a class="u-full-width button button-primary input agregar-carrito" data-productId=${prodIterator.id}>Agregar</a>
         </div>
@@ -233,7 +233,7 @@ export const updateProductsCartDom=()=>{
         whatsappProducts+=`*• ${item.quantity} x ${item.name}* ($${item.price}): *$${item.subTotalAmount}*\n`;
         if(item.customProduct){
             whatsappProducts+=`      _Ingredientes:_ ${item.description}\n`;
-            if(item.option!=""){whatsappProducts+=`     _Notas: ${item.option}_\n`};
+            if(item.option!=""){whatsappProducts+=`     Notas: ${item.option}\n`};
         }
 
     }

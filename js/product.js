@@ -1,4 +1,4 @@
-import {addAllProductsToDom, updateTotalComponentsSelectedDom, initComponentsDom} from "./dom.js"
+import {addAllProductsToDom, updateTotalComponentsSelectedDom, initComponentsDom,addAllComponentsToDom} from "./dom.js"
 import {cart} from './cart.js';
 import {animationToCartDom} from "./animations.js";
 import {getAllElementsDom,getElementDom} from "./globalfunctions.js";
@@ -62,56 +62,10 @@ export class CustomProduct extends Product{
 
 }
 
-//Array para almacenar los productos:-------------------------------------------------
+//Array para almacenar los productos:
 export let products=[];
 
-//Función para agregar un producto:
-export const addNewProduct = (title, description, price, img) => {
-    const productId=products.length
-    const productTemp = new Product(productId, title, description, price, img);
-    products.push(productTemp);
-    
-}
-
-//Array para almacenar los componentes:------------------------------------------------
-export let components =[];
-
-//Función para agregar componentes al array
-export const addComponents = (compName, price, img,mandatory) => {
-    const id=components.length; //asigno el id en base a la posición del array
-    //Agrego un objeto con el id + nombre + precio + si_es_seleccionado
-    components.push({
-        id:id,
-        name:compName,
-        price:price,
-        image:img,
-        mandatory:mandatory,
-        selected:false
-    });
-};
-
-//Función para seleccionar un componenente en base al id
-export const selectComponent = (id) => {
-    //cambio el valor de la propiedad Selected a True
-    components[id].selected=true;
-    //Actualizo el importe total de los componenetes seleccionados:
-    updateTotalComponentsSelectedDom('add', id)
-}
-
-//Función para deseleccionar un componenente en base al id
-export const unselectComponent = (id) => {
-    //cambio el valor de la propiedad Selected a True
-    components[id].selected=false;
-    //Actualizo el importe total de los componenetes seleccionados:
-    updateTotalComponentsSelectedDom('rest', id)
-}
-
-//Funcion para inicializar los componentes:
-export const unselectAllComponents = () => {
-    components.map((item)=>item.selected=false)
-}
-
-//Función para crear los Listeners de los botones COMPRAR
+//Función para crear los Listeners de los botones COMPRAR de los productos
 const productsBuyButtonListeners=()=>{
     const productsBuyButtonColection = getAllElementsDom('.agregar-carrito') //Creo la coleccion con todos los elementos botones para comprar
     productsBuyButtonColection.forEach((element) => { //Por cada uno de los botones (elementos):
@@ -144,17 +98,110 @@ $.ajax({
     }
 });
 
+
+
+//=========================================================================================================
+// COMPONENTS CLASS ↓↓↓↓↓
+//=========================================================================================================
+
+class Component{
+    constructor(id,name,price,image, mandatory){
+        this.id = id;
+        this.name = name;
+        this.price = price;
+        this.image = image;
+        this.mandatory = mandatory;
+        this.selected=false;
+    }
+
+    //Función para seleccionar un componenente en base al id
+    selectComponent = () => {
+        //cambio el valor de la propiedad Selected a True
+        this.selected=true;
+        //Actualizo el importe total de los componenetes seleccionados:
+        updateTotalComponentsSelectedDom('add', this.id);
+    }
+
+    //Función para deseleccionar un componenente en base al id
+    unselectComponent = () => {
+        //cambio el valor de la propiedad Selected a True
+        this.selected=false;
+        //Actualizo el importe total de los componenetes seleccionados:
+        updateTotalComponentsSelectedDom('rest', this.id);
+    }
+}
+
+//Array para almacenar los componentes:
+export let components =[];
+
+//Funcion para inicializar los componentes:
+export const unselectAllComponents = () => {
+    components.map((item)=>item.selected=false)
+}
+
+const componentsButtonsListeners = ()=>{
+    //Variable que contiene todos los checkbox de cada componente en el DOM:
+    let componentsCheckboxColection=getAllElementsDom('input[class=componentCheckbox]')
+
+    //Checkbox de componentes CLICK:
+    componentsCheckboxColection.forEach((checkbox)=>{ //Selecciono todos los checkbox:
+        checkbox.addEventListener('change',()=>{ //Agrego la función listener al evento CHANGE en cada uno  
+            if(checkbox.checked){ //si está seleccionado el checkbox:
+                //llamo a la funcion que selecciona ese componente
+                components[checkbox.dataset.componentid].selectComponent(); // <- product.js
+            }else{//si NO está seleccionado
+                //llamo a la funcion que desmarca ese componente
+                components[checkbox.dataset.componentid].unselectComponent(); // <- product.js
+            }
+        })
+    })
+
+    //Boton para confirmar la compra de un producto Custom:
+    getElementDom('#confirmCustomProduct').addEventListener('click',()=>{ //Selecciono el <confirmCustomProduct>
+        //Selecciono el elemento <textarea> con las notas del cliente
+        let inputNotes = getElementDom('#customProductNotes'); 
+        
+        //llamo la funcion para agregar el producto al cart
+        const customProduct = new CustomProduct("Pizza Personalizada"); //Creo un customProduct para trabajar en caso de haber productos personalizados:
+
+        customProduct.addToOrder(1,inputNotes.value); // <- product.js
+
+        //Cierro la ventana con los componentes (ingredientes)
+        $('.ingredientes-modal').fadeOut('fast');
+        $('#carrito').slideDown('slow');
+        
+        //Inicializo los componentes
+        initComponentsDom(); // <- dom.js
+    })
+
+    //Botón cancelar un producto Custom:
+    $('.borrar-seleccion').click((e)=>{
+        //Cierro la ventana con los componentes (ingredientes)
+        $('.ingredientes-modal').fadeOut('fast');
+
+        //Inicializo los componentes
+        initComponentsDom(); // <- dom.js
+    })
+
+}
+
 //Agrego componentes desde JSON
 $.ajax({
     type: "GET",
     url: "./json/components.json",
     success: (response) => {
-
-
-        
+        //recorro los datos obtenidos y cargo los componentes en el array components:
+        for (const componentBd of response) {
+            components.push(new Component(componentBd.id,componentBd.name,componentBd.price,componentBd.image,componentBd.mandatory))
+        }
+        //Cargo todos los componentes al DOM
+        addAllComponentsToDom(); // <- dom.js
+        componentsButtonsListeners();
     },
     error: (error)=>{
         console.error(error);
     }
 });
+
+
 

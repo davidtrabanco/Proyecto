@@ -1,6 +1,6 @@
 //Importo módulos:
-import {saveToLocalStorage, getFromLocalStorage,getRandomId} from "./globalfunctions.js"
-import {addProductToCartDom, updateProductsCartDom} from "./dom.js";
+import {getFromLocalStorage,getRandomId} from "./globalfunctions.js"
+import {updateProductsCartDom} from "./dom.js";
 
 //=========================================================================================================
 // CART - FUNCTIONS & VAR  ↓↓↓↓↓
@@ -50,6 +50,12 @@ class Cart{
             //Actualizo el carrito en el DOM:
             updateProductsCartDom(); // <- dom.js
         }
+    }
+
+    //Función para vaciar el carrito:
+    clearCart=()=>{
+        this.products=[];
+        updateProductsCartDom(); // <- dom.js
     }
 }
 
